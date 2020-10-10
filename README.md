@@ -1,4 +1,10 @@
 # README
+言語
+Ruby2.6.6
+
+フレームワーク
+Rails 6.0.3.3
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
