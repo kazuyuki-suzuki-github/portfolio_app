@@ -1,0 +1,29 @@
+<h1>Companies#edit</h1>
+<p>Find me in app/views/companies/edit.html.erb</p>
+
+<div>
+	<%= form_with(model: @company, local: true) do |f| %>
+		<div>
+			<%= f.hidden_field :company_id, :value => current_user.id, class: 'form-control' %>
+		</div>
+		<div>
+			<%= f.label :name %>
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+		<div>
+			<%= f.label :address %>
+			<%= f.text_field :address, class: 'form-control' %>
+		</div>
+		<div>
+			<%= f.label :access %>
+			<%= f.text_field :access, class: 'form-control' %>
+		</div>
+		<div>
+			<%= f.label :info %>
+			<%= f.text_area :info, class: 'form-control' %>
+    </div>
+		<div>
+			<%= f.submit "更新" %>
+		</div>
+  <% end %>
+</div>
