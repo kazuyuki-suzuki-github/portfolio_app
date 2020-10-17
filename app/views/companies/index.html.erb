@@ -1,0 +1,43 @@
+<h1>Companies#index</h1>
+<p>Find me in app/views/companies/index.html.erb</p>
+
+<% if logged_in? %>
+	<div>
+		<%= current_user.id %>
+	</div>
+	<div>
+		<%= current_user.name %>
+	</div>
+<% end %>
+
+<% if @company %>
+	<div>
+		<div>
+			<p>company_id</p>
+			<%= @company.company_id %>
+		</div>
+		<div>
+			<p>name</p>
+			<%= @company.name %>
+		</div>
+		<div>
+			<p>address</p>
+			<%= @company.address %>
+		</div>
+		<div>
+			<p>access</p>
+			<%= @company.access %>
+		</div>
+		<div>
+			<p>info</p>
+			<%= @company.info %>
+		</div>
+		<div>
+			<%= link_to "宿泊施設情報を編集する", edit_company_path(@company.id) %>
+		</div>
+	</div>
+<% else %>
+	<div>
+		<%= link_to "宿泊施設情報を登録する", new_company_path %>
+	</div>
+<% end %>
