@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_id: 1
+  name: MyString
+  check_in: 2020-10-18 13:46:56
+  check_out: 2020-10-18 13:46:56
+  stock: 1
+  price: 1
+  sale_from: 2020-10-18
+  sale_to: 2020-10-18
+  room_type: 1
+
+two:
+  company_id: 1
+  name: MyString
+  check_in: 2020-10-18 13:46:56
+  check_out: 2020-10-18 13:46:56
+  stock: 1
+  price: 1
+  sale_from: 2020-10-18
+  sale_to: 2020-10-18
+  room_type: 1
