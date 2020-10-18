@@ -35,6 +35,15 @@
 		<div>
 			<%= link_to "宿泊施設情報を編集する", edit_company_path(@company.id) %>
 		</div>
+		
+		<hr>
+		
+		<div>
+			<%= render @plans %>
+		</div>
+		<div>
+			<%= link_to "宿泊プランを登録する", new_plan_path %>
+		</div>
 	</div>
 <% else %>
 	<div>
