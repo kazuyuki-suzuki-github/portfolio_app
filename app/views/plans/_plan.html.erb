@@ -1,0 +1,8 @@
+<div>
+	<div>
+		<p>name</p>
+		<%= plan.name %>
+		<%= link_to "編集", edit_plan_path(plan.id) %>
+		<%= link_to "削除", plan_path(plan.id), method: :delete %>
+	</div>
+</div>

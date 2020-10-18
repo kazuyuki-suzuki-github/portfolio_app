@@ -2,6 +2,7 @@ class CompaniesController < ApplicationController
   
   def index
     @company = Company.find_by(company_id: current_user.id)
+    @plans = Plan.where(company_id: @company.id)
     @id = @company.id
   end
   

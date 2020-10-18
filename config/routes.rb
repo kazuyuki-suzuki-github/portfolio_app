@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'plans/new'
   root 'home#top'
   get '/login', to:'sessions#new'
   post '/login', to:'sessions#create'
