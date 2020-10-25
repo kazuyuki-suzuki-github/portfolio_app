@@ -17,13 +17,13 @@
 					<li><%= link_to "宿泊事業者ページ", companies_path %></li>
 					<li><%= link_to "アカウントを作成", new_user_path %></li>
 					<li><%= link_to "ログイン", login_path %></li>
-					<li><%= link_to "ログアウト", logout_path , method: :delete %></li>
+					<li><%= button_to "ログアウト", logout_path , method: :delete %></li>
 				</ul>
 			</nav>
 			<% if logged_in? %>
 				<a href="#" class="panel-btn"> <%= current_user.name %> </a>
 				<div class="panel">
-					<div><%= link_to "アカウント", "#", class:"panel-menu" %></div>
+					<div><%= link_to "アカウント", edit_user_path(current_user.id), class:"panel-menu" %></div>
 					<div><%= link_to "予約", reserve_index_path, class:"panel-menu" %></div>
 				</div>
 			<% end %>
