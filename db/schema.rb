@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_221347) do
+ActiveRecord::Schema.define(version: 2020_10_25_092922) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "company_id", null: false
@@ -37,12 +37,13 @@ ActiveRecord::Schema.define(version: 2020_10_18_221347) do
   end
 
   create_table "reserve_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "reserve_id"
     t.date "check_in"
     t.date "check_out"
     t.integer "people"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "reserve_id"
+    t.index ["reserve_id"], name: "index_reserve_details_on_reserve_id"
   end
 
   create_table "reserves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -61,4 +62,5 @@ ActiveRecord::Schema.define(version: 2020_10_18_221347) do
     t.string "password_digest"
   end
 
+  add_foreign_key "reserve_details", "reserves", column: "reserve_id"
 end
