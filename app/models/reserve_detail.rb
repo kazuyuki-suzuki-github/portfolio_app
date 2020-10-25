@@ -1,0 +1,2 @@
+class ReserveDetail < ApplicationRecord
+end

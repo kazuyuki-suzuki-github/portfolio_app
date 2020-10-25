@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reserve_id: 1
+  check_in: 2020-10-19
+  check_out: 2020-10-19
+  people: 1
+
+two:
+  reserve_id: 1
+  check_in: 2020-10-19
+  check_out: 2020-10-19
+  people: 1

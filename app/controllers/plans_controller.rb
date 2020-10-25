@@ -33,6 +33,10 @@ class PlansController < ApplicationController
     redirect_to request.referrer || companies_path
   end
   
+  def show
+    @plan = Plan.find_by(id: params[:id])
+  end
+  
   private
     def plan_params
       params.require(:plan).permit(:company_id, :name, :check_in, :check_out, :stock, :price, :sale_from, :sale_to, :room_type)

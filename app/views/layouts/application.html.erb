@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'home', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -21,7 +21,11 @@
 				</ul>
 			</nav>
 			<% if logged_in? %>
-				<%= current_user.name %>
+				<a href="#" class="panel-btn"> <%= current_user.name %> </a>
+				<div class="panel">
+					<div><%= link_to "アカウント", "#", class:"panel-menu" %></div>
+					<div><%= link_to "予約", reserve_index_path, class:"panel-menu" %></div>
+				</div>
 			<% end %>
 		</header>
 		<hr>
