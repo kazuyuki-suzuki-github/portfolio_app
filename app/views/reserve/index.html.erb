@@ -12,6 +12,7 @@
 			<p>plan_id</p>
 			<%= reserve.plan_id %>
 		</div>
+		<div><%= button_to "削除", reserve_path(reserve.id), method: :delete %></div>
 	<% } %>
 	<div>
 		<%= link_to "トップページ", root_path %>

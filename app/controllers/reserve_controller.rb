@@ -23,4 +23,10 @@ class ReserveController < ApplicationController
   def index
     @reserves = Reserve.where(user_id: current_user.id)
   end
+  
+  def destroy
+    @reserve = Reserve.find_by(id: params[:id]);
+    @reserve.destroy
+    redirect_to request.referrer || reserve_index_path
+  end
 end
