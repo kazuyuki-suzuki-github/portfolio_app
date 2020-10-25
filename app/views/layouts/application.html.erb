@@ -16,8 +16,12 @@
 				<ul>
 					<li><%= link_to "宿泊事業者ページ", companies_path %></li>
 					<li><%= link_to "アカウントを作成", new_user_path %></li>
-					<li><%= link_to "ログイン", login_path %></li>
-					<li><%= button_to "ログアウト", logout_path , method: :delete %></li>
+					<% if !logged_in? %>
+						<li><%= link_to "ログイン", login_path %></li>
+					<% end %>
+					<% if logged_in? %>
+						<li><%= button_to "ログアウト", logout_path , method: :delete %></li>
+					<% end %>
 				</ul>
 			</nav>
 			<% if logged_in? %>
