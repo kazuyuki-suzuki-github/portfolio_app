@@ -1,0 +1,29 @@
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+
+<div>
+  <%= form_with(model: @user, local: true) do |f| %>
+		<div>
+			<%= f.label :name %>
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+		<div>
+			<%= f.label :email %>
+			<%= f.email_field :email %>
+		</div>
+		<div>
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+		</div>
+		<div>
+			<%= f.label :password_confirmation, "Confirmation" %>
+			<%= f.password_field :password_confirmation %>
+		</div>
+		<div>
+			<%= f.submit "変更" %>
+		</div>
+  <% end %>
+	<div>
+		<div><%= button_to "削除", user_path(@user.id), method: :delete %></div>
+	</div>
+</div>
