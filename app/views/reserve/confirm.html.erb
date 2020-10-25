@@ -1,0 +1,40 @@
+<h1>Reserve#confirm</h1>
+<p>Find me in app/views/reserve/confirm.html.erb</p>
+
+<div>
+	<div>
+		<p>name</p>
+		<%= @plan.name %>
+	</div>
+	<div>
+		<p>check_in</p>
+		<%= @plan.check_in.strftime("%R") %>
+	</div>
+	<div>
+		<p>check_out</p>
+		<%= @plan.check_out.strftime("%R") %>
+	</div>
+	<div>
+		<p>stock</p>
+		<%= @plan.stock %>
+	</div>
+	<div>
+		<p>price</p>
+		<%= @plan.price %>
+	</div>
+	<div>
+		<p>sale_from</p>
+		<%= @plan.sale_from %>
+	</div>
+	<div>
+		<p>sale_to</p>
+		<%= @plan.sale_to %>
+	</div>
+	<div>
+		<p>room_type</p>
+		<%= @plan.room_type %>
+	</div>
+	<div>
+		<%= link_to "予約完了する", "reserve/create/#{@plan.id}" %>
+	</div>
+</div>

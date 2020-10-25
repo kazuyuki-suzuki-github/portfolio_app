@@ -1,0 +1,19 @@
+<h1>Reserve#index</h1>
+<p>Find me in app/views/reserve/index.html.erb</p>
+
+<h2>予約一覧</h2>
+<div>
+	<% @reserves.each { |reserve| %>
+		<div>
+			<p>company_id</p>
+			<%= reserve.company_id %>
+		</div>
+		<div>
+			<p>plan_id</p>
+			<%= reserve.plan_id %>
+		</div>
+	<% } %>
+	<div>
+		<%= link_to "トップページ", root_path %>
+	</div>
+</div>
