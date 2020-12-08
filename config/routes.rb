@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'plans/reserve/create/:id', to:'reserve#create'
-  get 'reserve/create'
+  get 'plans/reserve/confirm/reserve/create/:id', to:'reserve#create'
+  get 'plans/reserve/confirm/:id', to:'reserve#confirm'
   get 'search/result'
   get 'plans/new'
   root 'home#top'
