@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_25_092922) do
+ActiveRecord::Schema.define(version: 2020_12_08_081632) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "company_id", null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_10_25_092922) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.integer "coin", default: 100
   end
 
   add_foreign_key "reserve_details", "reserves", column: "reserve_id"
