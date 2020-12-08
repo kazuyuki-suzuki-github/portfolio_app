@@ -11,13 +11,17 @@ class ReserveController < ApplicationController
       afterWeek = Date.today + 7
       reserveDetail = ReserveDetail.new(reserve_id:reserve.id, check_in:afterWeek, check_out:afterWeek+1, people:2)
       if reserveDetail.save
-        redirect_to root_path
+        user = User.find(session[:user_id])
+        if user.update(coin:(user.coin - 1))
+          redirect_to root_path
+        end
       end
     end
   end
   
   def confirm
     @plan = Plan.find(params[:id])
+    @user = User.find(session[:user_id])
   end
   
   def index

@@ -39,6 +39,10 @@
 		<%= @plan.room_type %>
 	</div>
 	<div>
+		<p>コインが1枚減ります。</p>
+		<%= "残り#{@user.coin-1}枚" %>
+	</div>
+	<div>
 		<%= link_to "予約完了する", "reserve/create/#{@plan.id}" %>
 	</div>
 </div>
