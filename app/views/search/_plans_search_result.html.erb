@@ -1,10 +1,10 @@
 <div>
 	<div>
 		<p>name</p>
-		<% @plans_search_result.each{ |plan| %>
+		<% @plans_search_result.to_a.each{ |plan| %>
 			<div>
-				<%= plan.name %>
-				<%= link_to "詳細", plan_path(plan.id) %>
+				<%= plan['name'] %>
+				<%= link_to "詳細", plan_path(plan['id']) %>
 			</div>
 		<% } %>
 	</div>
