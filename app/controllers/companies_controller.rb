@@ -2,8 +2,10 @@ class CompaniesController < ApplicationController
   
   def index
     @company = Company.find_by(company_id: current_user.id)
-    @plans = Plan.where(company_id: @company.id)
-    @id = @company.id
+    if !@company.nil?
+      @plans = Plan.where(company_id: @company.id)
+      @id = @company.id
+    end
   end
   
   def new
@@ -34,6 +36,6 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      params.require(:company).permit(:company_id, :name, :address, :access, :info)
+      params.require(:company).permit(:company_id, :name, :address, :access, :info, :prefecture)
     end
 end

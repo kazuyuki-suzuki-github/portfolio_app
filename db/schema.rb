@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_042135) do
+ActiveRecord::Schema.define(version: 2020_12_11_103414) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "company_id", null: false
@@ -20,7 +20,23 @@ ActiveRecord::Schema.define(version: 2020_12_11_042135) do
     t.text "info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "prefecture", null: false
+    t.integer "prefecture_id", null: false
+  end
+
+  create_table "features", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "genre"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "plan_features", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "plans_id"
+    t.bigint "features_id"
+    t.index ["features_id"], name: "index_plan_features_on_features_id"
+    t.index ["plans_id"], name: "index_plan_features_on_plans_id"
   end
 
   create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -64,5 +80,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_042135) do
     t.integer "coin", default: 100
   end
 
+  add_foreign_key "plan_features", "features", column: "features_id"
+  add_foreign_key "plan_features", "plans", column: "plans_id"
   add_foreign_key "reserve_details", "reserves", column: "reserve_id"
 end
