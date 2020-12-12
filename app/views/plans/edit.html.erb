@@ -2,7 +2,7 @@
 <p>Find me in app/views/plans/edit.html.erb</p>
 
 <div>
-	<%= form_with(model: @plan, local: true) do |f| %>
+	<%= form_with(url:plan_path, method: :put, local: true) do |f| %>
 		<div>
 			<%= f.hidden_field :company_id, :value => @plan.company_id, class: 'form-control' %>
 		</div>
@@ -37,6 +37,20 @@
 		<div>
 			<%= f.label :room_type %>
 			<%= f.select :room_type, {'洋室':1, '和室':2}, { include_blank: '部屋タイプ'}, {class: 'form-control'} %>
+		</div>
+		<div>
+			<%= f.label :work_features %>
+			<% @work_features.each do |wf| %>
+				<%= f.check_box :work_features, {multiple: true, checked: @plan_work_features.include?(wf.id)}, wf.id, nil  %>
+				<%= wf.name %>
+			<% end %>
+		</div>
+		<div>
+			<%= f.label :vacation_features %>
+			<% @vacation_features.each do |vf| %>
+				<%= f.check_box :vacation_features, {multiple: true, checked: @plan_vacation_features.include?(vf.id)}, vf.id, nil  %>
+				<%= vf.name %>
+			<% end %>
 		</div>
 		<div>
 			<%= f.submit "更新" %>
