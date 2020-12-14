@@ -14,7 +14,21 @@
 		チェックアウト
 		<%= f.date_field :checkout, class: 'form-control' %>
 	</div>
-	<div>
+	<div>働くの特徴</div>
+	<div class="work_features">
+		<% @work_features.each do |wf| %>
+			<%= f.check_box :work_features, {multiple: true}, wf.id, nil  %>
+			<%= label_tag "work_features_" + wf.id.to_s ,wf.name %>
+		<% end %>
+	</div>
+	<div style="clear:left;">遊びの特徴</div>
+	<div class="vacation_features">
+		<% @vacation_features.each do |vf| %>
+			<%= f.check_box :vacation_features, {multiple: true}, vf.id, nil  %>
+			<%= label_tag "vacation_features_" + vf.id.to_s ,vf.name %>
+		<% end %>
+	</div>
+	<div style="clear:left;">
 		<%= f.submit "検索" %>
 	</div>
 <% end %>
