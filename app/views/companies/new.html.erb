@@ -25,7 +25,11 @@
 		<div>
 			<%= f.label :info %>
 			<%= f.text_area :info, class: 'form-control' %>
-   		 </div>
+		</div>
+		<div>
+			<%= f.label :portrait %>
+			<%= f.file_field :portraits, direct_upload: true, multiple: true %>
+		</div>	
 		<div>
 			<%= f.submit "登録" %>
 		</div>

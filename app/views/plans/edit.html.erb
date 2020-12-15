@@ -2,7 +2,7 @@
 <p>Find me in app/views/plans/edit.html.erb</p>
 
 <div>
-	<%= form_with(url:plan_path, method: :put, local: true) do |f| %>
+	<%= form_with(url:plan_path, model: @plan, method: :put, local: true) do |f| %>
 		<div>
 			<%= f.hidden_field :company_id, :value => @plan.company_id, class: 'form-control' %>
 		</div>
@@ -51,6 +51,19 @@
 				<%= f.check_box :vacation_features, {multiple: true, checked: @plan_vacation_features.include?(vf.id)}, vf.id, nil  %>
 				<%= vf.name %>
 			<% end %>
+		</div>
+		<div>
+			<p>portraits</p>
+			<% if @plan.portraits.attached? %>
+				<% @plan.portraits.each do |portrait| %>
+						<%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
+						<%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
+				<% end %>
+			<% end %>
+		</div>
+		<div>
+			<%= f.label :portrait %>
+			<%= f.file_field :portraits, direct_upload: true, multiple: true %>
 		</div>
 		<div>
 			<%= f.submit "更新" %>

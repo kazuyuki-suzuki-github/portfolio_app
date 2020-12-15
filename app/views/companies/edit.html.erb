@@ -2,7 +2,7 @@
 <p>Find me in app/views/companies/edit.html.erb</p>
 
 <div>
-	<%= form_with(model: @company, local: true) do |f| %>
+	<%= form_with(url:company_path, model: @company, method: :put, local: true) do |f| %>
 		<div>
 			<%= f.hidden_field :company_id, :value => current_user.id, class: 'form-control' %>
 		</div>
@@ -21,7 +21,20 @@
 		<div>
 			<%= f.label :info %>
 			<%= f.text_area :info, class: 'form-control' %>
-    </div>
+		</div>
+		<div>
+			<p>portraits</p>
+			<% if @company.portraits.attached? %>
+				<% @company.portraits.each do |portrait| %>
+						<%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
+						<%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
+				<% end %>
+			<% end %>
+		</div>
+		<div>
+			<%= f.label :portrait %>
+			<%= f.file_field :portraits, direct_upload: true, multiple: true %>
+		</div>
 		<div>
 			<%= f.submit "更新" %>
 		</div>

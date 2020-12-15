@@ -35,6 +35,14 @@
 		<%= @plan.room_type %>
 	</div>
 	<div>
+		<p>portraits</p>
+		<% if @plan.portraits.attached? %>
+			<% @plan.portraits.each do |portrait| %>
+				<%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
+		<% end %>
+	<% end %>
+</div>
+	<div>
 		<%= link_to "予約する", "reserve/confirm/#{@plan.id}" %>
 	</div>
 </div>
