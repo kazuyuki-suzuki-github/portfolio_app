@@ -37,6 +37,14 @@
 			<%= @company.info %>
 		</div>
 		<div>
+			<p>portraits</p>
+			<% if @company.portraits.attached? %>
+				<% @company.portraits.each do |portrait| %>
+			  		<%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
+				<% end %>
+		  <% end %>
+		</div>
+		<div>
 			<%= link_to "宿泊施設情報を編集する", edit_company_path(@company.id) %>
 		</div>
 		

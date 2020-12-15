@@ -72,15 +72,25 @@ class PlansController < ApplicationController
     pf = PlanFeature.where(plans_id:params[:id])
     pf.destroy_all
     @plan = Plan.find(params[:id])
+
+    #画像削除
+    if params[:plan][:image_ids]
+      params[:plan][:image_ids].each do |image_id|
+        image = @plan.portraits.find(image_id)
+        image.purge
+      end
+    end
+
+
     if @plan.update(plan_params)
       #働くの特徴を登録
-      params[:work_features].each do |v|
+      params[:plan][:work_features].each do |v|
         wf = {plans_id: @plan.id, features_id: v.to_i}
         @pf = PlanFeature.new(wf)
         @pf.save
       end
       #遊ぶの特徴を登録
-      params[:vacation_features].each do |v|
+      params[:plan][:vacation_features].each do |v|
         wf = {plans_id: @plan.id, features_id: v.to_i}
         @pf = PlanFeature.new(wf)
         @pf.save
@@ -103,6 +113,6 @@ class PlansController < ApplicationController
   
   private
     def plan_params
-      params.permit(:company_id, :name, :check_in, :check_out, :stock, :price, :sale_from, :sale_to, :room_type)
+      params.require(:plan).permit(:company_id, :name, :check_in, :check_out, :stock, :price, :sale_from, :sale_to, :room_type, portraits: [])
     end
 end

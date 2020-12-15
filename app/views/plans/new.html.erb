@@ -65,6 +65,11 @@
 			</div>
 
 			<div>
+				<%= f.label :portrait %>
+				<%= f.file_field :portraits, direct_upload: true, multiple: true %>
+			</div>
+
+			<div>
 				<%= f.submit "登録" %>
 			</div>
 		<% end %>

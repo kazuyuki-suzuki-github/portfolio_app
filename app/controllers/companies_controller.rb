@@ -27,6 +27,15 @@ class CompaniesController < ApplicationController
   
   def update
     @company = Company.find(params[:id])
+    
+    #画像削除
+    if params[:company][:image_ids]
+      params[:company][:image_ids].each do |image_id|
+        image = @company.portraits.find(image_id)
+        image.purge
+      end
+    end
+
     if @company.update(company_params)
       redirect_to companies_path
     else
@@ -36,6 +45,6 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      params.require(:company).permit(:company_id, :name, :address, :access, :info, :prefecture)
+      params.require(:company).permit(:company_id, :name, :address, :access, :info, :prefecture, portraits: [])
     end
 end
