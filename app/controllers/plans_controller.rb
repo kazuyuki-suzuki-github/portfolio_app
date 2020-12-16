@@ -5,19 +5,20 @@ class PlansController < ApplicationController
     @plan = Plan.new
     @work_features = Feature.where(genre:1)
     @vacation_features = Feature.where(genre:2)
+    @room_type = RoomType.all
   end
   
   def create
     @plan = Plan.new(plan_params)
     if @plan.save
       #働くの特徴を登録
-      params[:work_features].each do |v|
+      params[:plan][:work_features].each do |v|
         wf = {plans_id: @plan.id, features_id: v.to_i}
         @pf = PlanFeature.new(wf)
         @pf.save
       end
       #遊ぶの特徴を登録
-      params[:vacation_features].each do |v|
+      params[:plan][:vacation_features].each do |v|
         wf = {plans_id: @plan.id, features_id: v.to_i}
         @pf = PlanFeature.new(wf)
         @pf.save
@@ -32,6 +33,7 @@ class PlansController < ApplicationController
     @work_features = Feature.where(genre:1)
     @vacation_features = Feature.where(genre:2)
     @plan = Plan.find(params[:id])
+    @room_type = RoomType.all
     #働くの特徴を取得
     sql_w =  
     "select
