@@ -19,3 +19,7 @@
 .panel {
   display: none;
 }
+.field_with_errors {
+  display: inline;
+  border: solid 3px #e41010;
+}
