@@ -3,6 +3,13 @@
 
 <div>
 	<%= form_with(model: @company, local: true) do |f| %>
+		<% if @company.errors.any? %>
+			<ul>
+				<% @company.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		<% end %>
 		<div>
 			<%= f.hidden_field :company_id, :value => current_user.id, class: 'form-control' %>
 		</div>
@@ -12,7 +19,7 @@
 		</div>
 		<div>
 			<%= f.label :prefecture %>
-			<%= f.collection_select :prefecture, Prefecture.all, :id, :name %>
+			<%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
 		</div>
 		<div>
 			<%= f.label :address %>

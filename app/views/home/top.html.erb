@@ -3,12 +3,12 @@
 
 <%= form_with url:search_result_path, model: @search, method: :get, local: true do |f| %>
 	<% if @search.errors.any? %>
-  <ul>
-    <% @search.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+  		<ul>
+    		<% @search.errors.full_messages.each do |message| %>
+      		<li><%= message %></li>
+    		<% end %>
+  		</ul>
+	<% end %>
 	<div>
 		都道府県
 		<%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank:"選択" %>
