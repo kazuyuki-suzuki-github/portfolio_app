@@ -25,6 +25,10 @@ class PlansController < ApplicationController
       end
       redirect_to companies_path
     else
+      @company = Company.find_by(company_id: current_user.id)
+      @work_features = Feature.where(genre:1)
+      @vacation_features = Feature.where(genre:2)
+      @room_type = RoomType.all
       render 'new'
     end
   end
@@ -71,8 +75,8 @@ class PlansController < ApplicationController
   end
   
   def update
-    pf = PlanFeature.where(plans_id:params[:id])
-    pf.destroy_all
+    plan_work_features = PlanFeature.where(plans_id:params[:id], genre:1)
+    plan_vacation_features = PlanFeature.where(plans_id:params[:id], genre:2)
     @plan = Plan.find(params[:id])
 
     #画像削除
@@ -83,8 +87,9 @@ class PlansController < ApplicationController
       end
     end
 
-
     if @plan.update(plan_params)
+      plan_work_features.destroy_all
+      plan_vacation_features.destroy_all
       #働くの特徴を登録
       params[:plan][:work_features].each do |v|
         wf = {plans_id: @plan.id, features_id: v.to_i}
@@ -99,6 +104,43 @@ class PlansController < ApplicationController
       end
       redirect_to companies_path
     else
+      #働くの特徴を取得
+      sql_w =  
+      "select
+        f.id
+      from
+        plan_features pf
+          inner join features f on
+          f.id = pf.features_id
+      where
+        pf.plans_id = ?
+        and f.genre = 1
+      "
+      plan_work_features = PlanFeature.find_by_sql([sql_w,@plan.id])
+      @plan_work_features = Array.new
+      plan_work_features.each do |w|
+        @plan_work_features.push(w.id)
+      end
+      #遊ぶの特徴を取得
+      sql_v =  
+      "select
+        f.id
+      from
+        plan_features pf
+          inner join features f on
+          f.id = pf.features_id
+      where
+        pf.plans_id = ?
+        and f.genre = 2
+      "
+      plan_vacation_features = PlanFeature.find_by_sql([sql_v,@plan.id])
+      @plan_vacation_features = Array.new
+      plan_vacation_features.each do |v|
+        @plan_vacation_features.push(v.id)
+      end
+      @work_features = Feature.where(genre:1)
+      @vacation_features = Feature.where(genre:2)
+      @room_type = RoomType.all
       render 'edit'
     end
   end
