@@ -5,6 +5,8 @@ class CompaniesController < ApplicationController
     if !@company.nil?
       @plans = Plan.where(company_id: @company.id)
       @id = @company.id
+      logger.debug("★★★")
+      logger.debug("#{@company.name}")
     end
   end
   
@@ -45,6 +47,6 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      params.require(:company).permit(:company_id, :name, :address, :access, :info, :prefecture, portraits: [])
+      params.require(:company).permit(:company_id, :name, :address, :access, :info, :prefecture_id, portraits: [])
     end
 end
