@@ -3,6 +3,13 @@
 
 <div>
 	<%= form_with(url:plan_path, model: @plan, method: :put, local: true) do |f| %>
+		<% if @plan.errors.any? %>
+			<ul>
+				<% @plan.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		<% end %>
 		<div>
 			<%= f.hidden_field :company_id, :value => @plan.company_id, class: 'form-control' %>
 		</div>
