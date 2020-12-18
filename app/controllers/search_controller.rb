@@ -1,10 +1,10 @@
 class SearchController < ApplicationController
   def result
-
     @search  = Search.new(
       prefecture_id:params[:search][:prefecture_id],
       checkin:params[:search][:checkin],
-      checkout:params[:search][:checkout])
+      checkout:params[:search][:checkout],
+      people:params[:search][:people])
     if !@search.valid?
       @work_features = Feature.where(genre:1)
       @vacation_features = Feature.where(genre:2)
@@ -13,8 +13,12 @@ class SearchController < ApplicationController
     end
     
     @prefecture_id = params[:search][:prefecture_id]
-    @checkin = params[:search][:checkin]
-    @checkout = params[:search][:checkout]
+    #@checkin = params[:search][:checkin]
+    #@checkout = params[:search][:checkout]
+    #@people = params[:search][:people]
+    session[:checkin] = params[:search][:checkin]
+    session[:checkout] = params[:search][:checkout]
+    session[:people] = params[:search][:people]
     @work_features = params[:search][:work_features]
     @vacation_features = params[:search][:vacation_features]
     @work_features.push(@vacation_features)
@@ -22,9 +26,6 @@ class SearchController < ApplicationController
     @result_plans_id = Array.new
   
     @result = PlanFeature.select('plans_id, count(plans_id)').where(features_id: @search_features).group(:plans_id).order('count(plans_id) desc')
-    #@result.each do |res|
-    #  @result_plans_id.push(res.plans_id)
-    #end
     @result_plans_id = @result.map{|i| i.plans_id}
     logger.debug("#{@result_plans_id}")
 
@@ -41,6 +42,7 @@ class SearchController < ApplicationController
         and p.sale_to >= ?
         and p.id IN (?)
       "
-    @plans_search_result = Plan.find_by_sql([sql,@prefecture_id, @checkin, @checkout,@result_plans_id])
+    @plans_search_result = Plan.find_by_sql(
+      [sql,@prefecture_id, params[:search][:checkin], params[:search][:checkout],@result_plans_id])
   end
 end

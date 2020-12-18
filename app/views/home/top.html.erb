@@ -21,6 +21,10 @@
 		チェックアウト
 		<%= f.date_field :checkout, value: f.object.checkout, class: 'form-control' %>
 	</div>
+	<div>
+		人数
+		<%= f.select :people, {'1':1,'2':2,'3':3,'4':4,'5':5}, class: 'form-control' %>
+	</div>
 	<div>働くの特徴</div>
 	<div class="work_features">
 		<% @work_features.each do |wf| %>

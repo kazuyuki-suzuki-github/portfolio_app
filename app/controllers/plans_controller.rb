@@ -75,8 +75,7 @@ class PlansController < ApplicationController
   end
   
   def update
-    plan_work_features = PlanFeature.where(plans_id:params[:id], genre:1)
-    plan_vacation_features = PlanFeature.where(plans_id:params[:id], genre:2)
+    plan_features = PlanFeature.where(plans_id:params[:id])
     @plan = Plan.find(params[:id])
 
     #画像削除
@@ -88,8 +87,7 @@ class PlansController < ApplicationController
     end
 
     if @plan.update(plan_params)
-      plan_work_features.destroy_all
-      plan_vacation_features.destroy_all
+      plan_features.destroy_all
       #働くの特徴を登録
       params[:plan][:work_features].each do |v|
         wf = {plans_id: @plan.id, features_id: v.to_i}
