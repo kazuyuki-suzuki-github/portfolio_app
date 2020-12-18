@@ -3,8 +3,9 @@
 
 <div>
 	<%= @prefecture_id %>
-	<%= @checkin %>
-	<%= @checkout %>
+	<%= session[:checkin] %>
+	<%= session[:checkout] %>
+	<%= session[:people] %>
 </div>
 <div>
 	<%= render 'plans_search_result' %>

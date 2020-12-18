@@ -7,9 +7,8 @@ class ReserveController < ApplicationController
     @company = Company.find(@plan.company_id)
     reserve = Reserve.new(user_id:current_user.id , company_id:@company.id , plan_id:@plan.id)
     if reserve.save
-      #予約日の１週間後から１泊宿泊（暫定対応）
-      afterWeek = Date.today + 7
-      reserveDetail = ReserveDetail.new(reserve_id:reserve.id, check_in:afterWeek, check_out:afterWeek+1, people:2)
+      reserveDetail = ReserveDetail.new(
+        reserve_id:reserve.id, check_in:session[:checkin], check_out:session[:checkout], people:session[:people])
       if reserveDetail.save
         user = User.find(session[:user_id])
         if user.update(coin:(user.coin - 1))
