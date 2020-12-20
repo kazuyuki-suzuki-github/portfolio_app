@@ -23,3 +23,49 @@
   display: inline;
   border: solid 3px #e41010;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F3F3F4;
+  color: #00234B;
+}
+
+header {
+  margin: 0 auto;
+  width:1200px;
+}
+
+.main {
+  clear:left;
+  margin: 0 auto;
+  width:1200px;
+}
+
+a {
+  text-decoration: none;
+  color: #00234B;
+}
+
+.logo {
+  float: left;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  float: right;
+  margin-top: 35px;
+  list-style: none;
+  font-size: 14px;
+}
+
+.menu li {
+  margin: 0 10px;
+}
+
+.user-name {
+  margin-right: 22px
+}
