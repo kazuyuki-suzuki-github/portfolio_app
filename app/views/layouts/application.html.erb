@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>Pf</title>
     <%= csrf_meta_tags %>
@@ -11,29 +11,37 @@
 
   <body>
 		<header>
-			<h1><%= link_to "Workation.com", '/'%></h1>
-			<nav>
-				<ul>
-					<li><%= link_to "宿泊事業者ページ", companies_path %></li>
-					<li><%= link_to "アカウントを作成", new_user_path %></li>
-					<% if !logged_in? %>
-						<li><%= link_to "ログイン", login_path %></li>
-					<% end %>
-					<% if logged_in? %>
-						<li><%= button_to "ログアウト", logout_path , method: :delete %></li>
-					<% end %>
-				</ul>
-			</nav>
-			<% if logged_in? %>
-				<a href="#" class="panel-btn"> <%= current_user.name %> </a>
-				<div class="panel">
-					<div><%= link_to "アカウント", edit_user_path(current_user.id), class:"panel-menu" %></div>
-					<div><%= link_to "予約", reserve_index_path, class:"panel-menu" %></div>
-				</div>
-			<% end %>
+			<div class="header-logo-menu">
+				<div class="logo">
+					<h1><%= link_to "Workation.com", '/'%></h1>
+				</div>	
+				<nav>
+					<ul class="menu">
+						<% if logged_in? %>
+							<li>
+								<%= link_to current_user.name + ' ▼', '#', class: "panel-btn user-name" %>
+								<div class="panel">
+									<div><%= link_to "- アカウント", edit_user_path(current_user.id), class:"panel-menu" %></div>
+									<div><%= link_to "- 予約", reserve_index_path, class:"panel-menu" %></div>
+								</div>
+							</li>
+						<% end %>
+						<% if logged_in? %>
+							<li><%= link_to "Log out", logout_path %></li>
+						<% end %>
+						<% if !logged_in? %>
+							<li><%= link_to "Log in", login_path %></li>
+						<% end %>
+						<li><%= link_to "Sign up", new_user_path %></li>
+						<li><%= link_to "宿泊施設を登録する", companies_path %></li>
+						
+					</ul>
+				</nav>
+			</div>
 		</header>
-		<hr>
-    <%= yield %>
+		<div class="main">
+			<%= yield %>
+		</div>
 		<%= debug(params) if Rails.env.development? %>
   </body>
 </html>
