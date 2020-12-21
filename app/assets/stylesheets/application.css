@@ -31,12 +31,12 @@
 body {
   background-color: #F3F3F4;
   color: #00234B;
+  width:100%;
 }
 
 header {
   padding: 30px 42px;
   margin: 0 auto;
-  width:1200px;
 }
 
 footer {
@@ -46,7 +46,6 @@ footer {
 }
 
 .main {
-  padding-top: 20px;
   clear:left;
 }
 
