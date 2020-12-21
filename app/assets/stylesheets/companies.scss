@@ -1,3 +1,31 @@
 // Place all the styles related to the Companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.company-contents{
+    background-color: white;
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+.company-contents-detail {
+    padding: 5px 0;
+}
+
+.company-contents-label {
+    font-size: 12px;
+}
+
+.plan-contents{
+    background-color: white;
+    padding: 5px 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.plan-contents-detail {
+    padding: 5px 0;
+}
+
+.plan-contents-label {
+    font-size: 12px;
+}

@@ -45,6 +45,14 @@ footer {
   color: #F3F3F4;
 }
 
+.wrap-left {
+	padding: 30px 42px;
+}
+
+.contents {
+  padding: 15px 0;
+}
+
 .main {
   clear:left;
 }
@@ -88,4 +96,20 @@ nav {
 .copyright {
   font-size: 10px;
   margin-top: 5px;
+}
+
+.edit-button {
+  background-color: #00234B;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 5px 15px;
+}
+
+.delete-button {
+  background-color: #E01886;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 5px 15px;
 }
