@@ -1,7 +1,5 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
-
-<div>
+<div class="wrap">
+	<h1>Sign up</h1>
   <%= form_with(model: @user, local: true) do |f| %>
 		<% if @user.errors.any? %>
 			<ul>
@@ -10,24 +8,24 @@
 				<% end %>
 			</ul>
 		<% end %>
-		<div>
-			<%= f.label :name %>
-			<%= f.text_field :name %>
+		<div class="field">
+			<p><%= f.label :name, class: 'name-label' %></p>
+			<%= f.text_field :name, class: 'name-field' %>
 		</div>
-		<div>
-			<%= f.label :email %>
-			<%= f.email_field :email %>
+		<div class="field">
+			<p><%= f.label :email, class: 'email-label' %></p>
+			<%= f.email_field :email, class: 'email-field' %>
 		</div>
-		<div>
-			<%= f.label :password %>
-			<%= f.password_field :password %>
+		<div class="field">
+			<p><%= f.label :password, class: 'password-label' %></p>
+			<%= f.password_field :password, class: 'password-field' %>
 		</div>
-		<div>
-			<%= f.label :password_confirmation, "Confirmation" %>
-			<%= f.password_field :password_confirmation %>
+		<div class="field">
+			<p><%= f.label :password_confirmation, "Confirmation", class: 'password-confirmation-label' %></p>
+			<%= f.password_field :password_confirmation, class: 'password-confirmation-field' %>
 		</div>
-		<div>
-			<%= f.submit "Create my account" %>
+		<div class="field">
+			<%= f.submit "Sign up", class: 'signup-field' %>
 		</div>
   <% end %>
 </div>
