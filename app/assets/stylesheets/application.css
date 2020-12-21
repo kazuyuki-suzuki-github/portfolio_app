@@ -34,11 +34,19 @@ body {
 }
 
 header {
+  padding: 30px 42px;
   margin: 0 auto;
   width:1200px;
 }
 
+footer {
+  padding: 30px 42px;
+  background-color: #00234B;
+  color: #F3F3F4;
+}
+
 .main {
+  padding: 30px 42px;
   clear:left;
   margin: 0 auto;
   width:1200px;
@@ -57,7 +65,6 @@ a {
   display: flex;
   flex-direction: row;
   float: right;
-  margin-top: 35px;
   list-style: none;
   font-size: 14px;
 }
@@ -68,4 +75,15 @@ a {
 
 .user-name {
   margin-right: 22px
+}
+
+.footer-menu {
+  color: #F3F3F4;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.copyright {
+  font-size: 10px;
+  margin-top: 5px;
 }
