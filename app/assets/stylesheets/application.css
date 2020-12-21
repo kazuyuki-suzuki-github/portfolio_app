@@ -46,10 +46,8 @@ footer {
 }
 
 .main {
-  padding: 30px 42px;
+  padding-top: 20px;
   clear:left;
-  margin: 0 auto;
-  width:1200px;
 }
 
 a {
@@ -61,6 +59,10 @@ a {
   float: left;
 }
 
+nav {
+  padding-top: 10px;
+}
+
 .menu {
   display: flex;
   flex-direction: row;
@@ -70,6 +72,7 @@ a {
 }
 
 .menu li {
+  font-size: 12px;
   margin: 0 10px;
 }
 
