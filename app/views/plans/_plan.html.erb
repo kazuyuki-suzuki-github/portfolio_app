@@ -1,8 +1,14 @@
-<div>
-	<div>
-		<p>name</p>
+<div class="plan-contents">
+	<div class="plan-contents-detail">
+		<p class="plan-contents-label">プラン名</p>
 		<%= plan.name %>
-		<%= link_to "編集", edit_plan_path(plan.id) %>
-		<%= link_to "削除", plan_path(plan.id), method: :delete %>
+	</div>
+	<div class="plan-contents-detail">
+		<p class="plan-contents-label">販売期間</p>
+		<%= "#{plan.sale_from} － #{plan.sale_to}" %>
+	</div>
+	<div class="plan-contents-detail">
+		<%= link_to "編集", edit_plan_path(plan.id) , class: 'edit-button' %>
+		<%= link_to "削除", plan_path(plan.id), method: :delete, class:'delete-button' %>
 	</div>
 </div>
