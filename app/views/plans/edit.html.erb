@@ -1,79 +1,79 @@
-<h1>Plans#edit</h1>
-<p>Find me in app/views/plans/edit.html.erb</p>
-
-<div>
-	<%= form_with(url:plan_path, model: @plan, method: :put, local: true) do |f| %>
-		<% if @plan.errors.any? %>
-			<ul>
-				<% @plan.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-				<% end %>
-			</ul>
-		<% end %>
-		<div>
-			<%= f.hidden_field :company_id, :value => @plan.company_id, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :name %>
-			<%= f.text_field :name, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :check_in %>
-			<%= f.time_field :check_in, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :check_out %>
-			<%= f.time_field :check_out, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :stock %>
-			<%= f.number_field :stock, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :price %>
-			<%= f.number_field :price, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :sale_from %>
-			<%= f.date_field :sale_from, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :sale_to %>
-			<%= f.date_field :sale_to, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :room_type %>
-			<%= f.select :room_type, options_for_select(@room_type.map{|r| [r.name, r.id]}, @plan.room_type) %>
-		</div>
-		<div>
-			<%= f.label :work_features %>
-			<% @work_features.each do |wf| %>
-				<%= f.check_box :work_features, {multiple: true, checked: @plan_work_features.include?(wf.id)}, wf.id, nil  %>
-				<%= wf.name %>
-			<% end %>
-		</div>
-		<div>
-			<%= f.label :vacation_features %>
-			<% @vacation_features.each do |vf| %>
-				<%= f.check_box :vacation_features, {multiple: true, checked: @plan_vacation_features.include?(vf.id)}, vf.id, nil  %>
-				<%= vf.name %>
-			<% end %>
-		</div>
-		<div>
-			<p>portraits</p>
-			<% if @plan.portraits.attached? %>
-				<% @plan.portraits.each do |portrait| %>
-						<%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
-						<%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
-				<% end %>
-			<% end %>
-		</div>
-		<div>
-			<%= f.label :portrait %>
-			<%= f.file_field :portraits, direct_upload: true, multiple: true %>
-		</div>
-		<div>
-			<%= f.submit "更新" %>
-		</div>
+<div class="wrap-left">
+	<h2>宿泊プランを更新する</h2>
+  <%= form_with(url:plan_path, model: @plan, method: :put, local: true) do |f| %>
+    <% if @plan.errors.any? %>
+      <ul>
+        <% @plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div>
+      <%= f.hidden_field :company_id, :value => @plan.company_id, class: 'form-control' %>
+    </div>
+    <div class="edit-plan">
+      <p><%= f.label :name , class: "edit-plan-label-name" %></p>
+      <%= f.text_field :name, class: 'form-control edit-plan-form-name' %>
+    </div>
+    <div class="edit-plan">
+			<p><%= f.label :check_in , class: "edit-plan-label-checkin" %></p>
+      <%= f.time_field :check_in, class: 'form-control edit-plan-form-checkin' %>
+    </div>
+		<div class="edit-plan">
+      <p><%= f.label :check_out , class: "edit-plan-label-checkout" %></p>
+      <%= f.time_field :check_out, class: 'form-control edit-plan-form-checkout' %>
+    </div>
+    <div class="edit-plan">
+			<p><%= f.label :stock , class: "edit-plan-label-stock" %></p>
+      <%= f.number_field :stock, class: 'form-control edit-plan-form-stock' %>
+    </div>
+    <div class="edit-plan">
+			<p><%= f.label :price , class: "edit-plan-label-price" %></p>
+      <%= f.number_field :price, class: 'form-control edit-plan-form-price' %>
+    </div>
+    <div class="edit-plan">
+			<p><%= f.label :sale_from , class: "edit-plan-label-salefrom" %></p>
+      <%= f.date_field :sale_from, class: 'form-control edit-plan-form-salefrom' %>
+    </div>
+    <div class="edit-plan">
+			<p><%= f.label :sale_to , class: "edit-plan-label-saleto" %></p>
+      <%= f.date_field :sale_to, class: 'form-control edit-plan-form-saleto' %>
+    </div>
+    <div class="edit-plan">
+			<p><%= f.label :room_type , class: "edit-plan-label-roomtype" %></p>
+      <%= f.select :room_type, options_for_select(@room_type.map{|r| [r.name, r.id]}, @plan.room_type), {}, class: "edit-plan-form-roomtype" %>
+    </div>
+    <div class="edit-plan">
+			<!-- <%= f.label :work_features %> -->
+			<p class="edit-plan-label-workfeatures">働くのキーワード</p>
+      <% @work_features.each do |wf| %>
+        <%= f.check_box :work_features, {multiple: true, checked: @plan_work_features.include?(wf.id)}, wf.id, nil  %>
+        <%= wf.name %>
+      <% end %>
+    </div>
+    <div class="edit-plan">
+			<!-- <%= f.label :vacation_features %> -->
+			<p class="edit-plan-label-vacationfeatures">遊びのキーワード</p>
+      <% @vacation_features.each do |vf| %>
+        <%= f.check_box :vacation_features, {multiple: true, checked: @plan_vacation_features.include?(vf.id)}, vf.id, nil  %>
+        <%= vf.name %>
+      <% end %>
+    </div>
+    <div class="edit-plan">
+      <p class="edit-plan-label-portraits">登録済のプラン写真</p>
+      <% if @plan.portraits.attached? %>
+        <% @plan.portraits.each do |portrait| %>
+            <%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
+            <%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="edit-plan">
+			<p class="edit-plan-label-portraits-update">プラン写真を更新する</p>
+      <%= f.file_field :portraits, direct_upload: true, multiple: true %>
+    </div>
+    <div>
+      <%= f.submit "更新",class: "edit-button" %>
+    </div>
   <% end %>
 </div>

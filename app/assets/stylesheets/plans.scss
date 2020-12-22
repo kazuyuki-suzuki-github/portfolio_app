@@ -1,3 +1,82 @@
 // Place all the styles related to the Plans controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.edit-plan {
+  padding: 5px 0;
+}
+.edit-plan-label-name {
+  font-size: 12px;
+}
+.edit-plan-label-checkin {
+  font-size: 12px;
+}
+.edit-plan-label-checkout {
+  font-size: 12px;
+}
+.edit-plan-label-stock {
+  font-size: 12px;
+}
+.edit-plan-label-price {
+  font-size: 12px;
+}
+.edit-plan-label-salefrom {
+  font-size: 12px;
+}
+.edit-plan-label-saleto {
+  font-size: 12px;
+}
+.edit-plan-label-roomtype {
+  font-size: 12px;
+}
+.edit-plan-label-workfeatures {
+  font-size: 12px;
+}
+.edit-plan-label-vacationfeatures {
+  font-size: 12px;
+}
+.edit-plan-label-portraits {
+  font-size: 12px;
+}
+.edit-plan-label-portraits-update {
+  font-size: 12px;
+}
+.edit-plan-form-name {
+  background-color: white;
+  width: 600px;
+  border-radius: 5px;
+}
+.edit-plan-form-checkin {
+  background-color: white;
+  width: 100px;
+  border-radius: 5px;
+}
+.edit-plan-form-checkout {
+  background-color: white;
+  width: 100px;
+  border-radius: 5px;
+}
+.edit-plan-form-stock {
+  background-color: white;
+  width: 100px;
+  border-radius: 5px;
+}
+.edit-plan-form-price {
+  background-color: white;
+  width: 100px;
+  border-radius: 5px;
+}
+.edit-plan-form-salefrom {
+  background-color: white;
+  width: 150px;
+  border-radius: 5px;
+}
+.edit-plan-form-saleto {
+  background-color: white;
+  width: 150px;
+  border-radius: 5px;
+}
+.edit-plan-form-roomtype {
+  background-color: white;
+  width: 250px;
+  border-radius: 5px;
+}
