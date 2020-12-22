@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      plan:
+        name: プラン名
+        check_in: チェックイン時刻
+        check_out: チェックアウト時刻
+        stock: 在庫
+        price: 宿泊料金
+        sale_from: 販売開始日
+        sale_to: 販売終了日
+        room_type: 部屋タイプ
