@@ -2,30 +2,83 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .company-contents{
-    background-color: white;
-    padding: 5px 5px;
-    border-radius: 5px;
+  background-color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
 }
 
 .company-contents-detail {
-    padding: 5px 0;
+  padding: 5px 0;
 }
 
 .company-contents-label {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .plan-contents{
-    background-color: white;
-    padding: 5px 5px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  background-color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .plan-contents-detail {
-    padding: 5px 0;
+  padding: 5px 0;
 }
 
 .plan-contents-label {
-    font-size: 12px;
+  font-size: 12px;
+}
+
+.edit-company {
+  padding: 5px 0;
+}
+
+.edit-company-label-name {
+  font-size: 12px;
+}
+
+.edit-company-label-address {
+  font-size: 12px;
+}
+
+.edit-company-label-access {
+  font-size: 12px;
+}
+
+.edit-company-label-info {
+  font-size: 12px;
+}
+
+.edit-company-label-portraits {
+  font-size: 12px;
+}
+
+.edit-company-label-portraits-update {
+  font-size: 12px;
+}
+
+.edit-company-form-name {
+  background-color: white;
+  width: 600px;
+  border-radius: 5px;
+}
+
+.edit-company-form-address {
+  background-color: white;
+  width: 600px;
+  border-radius: 5px;
+}
+
+.edit-company-form-access {
+  background-color: white;
+  width: 600px;
+  border-radius: 5px;
+}
+
+.edit-company-form-info {
+  background-color: white;
+  height: 100px;
+  width: 600px;
+  border-radius: 5px;
 }
