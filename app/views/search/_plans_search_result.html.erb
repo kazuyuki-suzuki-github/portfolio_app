@@ -3,8 +3,11 @@
 		<p>name</p>
 		<% @plans_search_result.to_a.each{ |plan| %>
 			<div>
-				<%= plan['name'] %>
-				<%= link_to "詳細", plan_path(plan['id']) %>
+				<%= plan['c_name'] %>
+				<%= plan['c_access'] %>
+				<%= plan['p_name'] %>
+				<%= plan['p_price'] %>
+				<%= link_to "詳細", plan_path(plan['p_id']) %>
 			</div>
 		<% } %>
 	</div>
