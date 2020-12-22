@@ -1,49 +1,46 @@
-<h1>Companies#edit</h1>
-<p>Find me in app/views/companies/edit.html.erb</p>
-
-<div>
-	<%= form_with(url:company_path, model: @company, method: :put, local: true) do |f| %>
-		<% if @company.errors.any? %>
-			<ul>
-		  	<% @company.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-		  	<% end %>
-			</ul>
-  	<% end %>
-		<div>
-			<%= f.hidden_field :company_id, :value => current_user.id, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :name %>
-			<%= f.text_field :name, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :address %>
-			<%= f.text_field :address, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :access %>
-			<%= f.text_field :access, class: 'form-control' %>
-		</div>
-		<div>
-			<%= f.label :info %>
-			<%= f.text_area :info, class: 'form-control' %>
-		</div>
-		<div>
-			<p>portraits</p>
-			<% if @company.portraits.attached? %>
-				<% @company.portraits.each do |portrait| %>
-						<%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
-						<%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
-				<% end %>
-			<% end %>
-		</div>
-		<div>
-			<%= f.label :portrait %>
-			<%= f.file_field :portraits, direct_upload: true, multiple: true %>
-		</div>
-		<div>
-			<%= f.submit "更新" %>
-		</div>
+<div class="wrap-left">
+  <%= form_with(url:company_path, model: @company, method: :put, local: true) do |f| %>
+    <% if @company.errors.any? %>
+      <ul>
+        <% @company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div>
+      <%= f.hidden_field :company_id, :value => current_user.id, class: 'form-control' %>
+    </div>
+    <div class="edit-company">
+      <p><%= f.label :name ,class: "edit-company-label-name"%></p>
+      <%= f.text_field :name, class: 'form-control edit-company-form-name' %>
+    </div>
+    <div class="edit-company">
+      <p><%= f.label :address ,class: "edit-company-label-address"%></p>
+      <%= f.text_field :address, class: 'form-control edit-company-form-address' %>
+    </div>
+    <div class="edit-company">
+      <p><%= f.label :access ,class: "edit-company-label-access"%></p>
+      <%= f.text_field :access, class: 'form-control edit-company-form-access' %>
+    </div>
+    <div class="edit-company">
+      <p><%= f.label :info ,class: "edit-company-label-info"%></p>
+      <%= f.text_area :info, class: 'form-control edit-company-form-info' %>
+    </div>
+    <div class="edit-company">
+      <p class="edit-company-label-portraits">施設写真</p>
+      <% if @company.portraits.attached? %>
+        <% @company.portraits.each do |portrait| %>
+            <%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
+            <%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="edit-company">
+      <p><%= f.label "施設写真を更新する", class: "edit-company-label-portraits-update" %></p>
+      <%= f.file_field :portraits, direct_upload: true, multiple: true %>
+    </div>
+    <div>
+      <%= f.submit "更新" ,class: "edit-button"%>
+    </div>
   <% end %>
 </div>

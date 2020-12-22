@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      company:
+        name: 施設名
+        address: 住所
+        access: アクセス
+        info: 情報
