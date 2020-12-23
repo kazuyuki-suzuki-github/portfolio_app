@@ -1,7 +1,7 @@
 class PlansController < ApplicationController
   
   def new
-    @company = Company.find_by(company_id: current_user.id)
+    @company = Company.find_by(user_id: current_user.id)
     @plan = Plan.new
     @work_features = Feature.where(genre:1)
     @vacation_features = Feature.where(genre:2)
@@ -25,7 +25,7 @@ class PlansController < ApplicationController
       end
       redirect_to companies_path
     else
-      @company = Company.find_by(company_id: current_user.id)
+      @company = Company.find_by(user_id: current_user.id)
       @work_features = Feature.where(genre:1)
       @vacation_features = Feature.where(genre:2)
       @room_type = RoomType.all

@@ -1,12 +1,10 @@
 class CompaniesController < ApplicationController
   
   def index
-    @company = Company.find_by(company_id: current_user.id)
+    @company = Company.find_by(user_id: current_user.id)
     if !@company.nil?
       @plans = Plan.where(company_id: @company.id)
       @id = @company.id
-      logger.debug("★★★")
-      logger.debug("#{@company.name}")
     end
   end
   
@@ -47,6 +45,6 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      params.require(:company).permit(:company_id, :name, :address, :access, :info, :prefecture_id, portraits: [])
+      params.require(:company).permit(:user_id, :name, :address, :access, :info, :prefecture_id, portraits: [])
     end
 end

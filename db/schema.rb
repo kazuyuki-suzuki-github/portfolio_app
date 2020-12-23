@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_092904) do
+ActiveRecord::Schema.define(version: 2020_12_23_002900) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_12_17_092904) do
   end
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "company_id", null: false
     t.string "name", null: false
     t.string "address", null: false
     t.string "access"
@@ -42,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_12_17_092904) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "prefecture_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
   create_table "features", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -61,7 +62,6 @@ ActiveRecord::Schema.define(version: 2020_12_17_092904) do
   end
 
   create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "company_id"
     t.string "name"
     t.time "check_in"
     t.time "check_out"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2020_12_17_092904) do
     t.integer "room_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_plans_on_company_id"
   end
 
   create_table "reserve_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -108,5 +110,6 @@ ActiveRecord::Schema.define(version: 2020_12_17_092904) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "plan_features", "features", column: "features_id"
   add_foreign_key "plan_features", "plans", column: "plans_id"
+  add_foreign_key "plans", "companies"
   add_foreign_key "reserve_details", "reserves", column: "reserve_id"
 end
