@@ -1,48 +1,37 @@
-<h1>Reserve#confirm</h1>
-<p>Find me in app/views/reserve/confirm.html.erb</p>
-
-<div>
-	<div>
+<div class="wrap-left">
+	<div class="reserve-confirm">
 		<h4>以下の内容で予約します。</h4>
 		<h4>よろしいですか？</h4>
 	</div>
-	<div>
-		<p>name</p>
+	<div class="reserve-confirm">
+		<p class="reserve-confirm-name">プラン名</p>
 		<%= @plan.name %>
 	</div>
-	<div>
-		<p>check_in</p>
+	<div class="reserve-confirm">
+		<p class="reserve-confirm-day">日程</p>
+		<%= "#{session[:checkin]} - #{session[:checkout]}" %>
+	</div>
+	<div class="reserve-confirm">
+		<p class="reserve-confirm-checkin">チェックイン時刻</p>
 		<%= @plan.check_in.strftime("%R") %>
 	</div>
-	<div>
-		<p>check_out</p>
+	<div class="reserve-confirm">
+		<p class="reserve-confirm-checkout">チェックアウト時刻</p>
 		<%= @plan.check_out.strftime("%R") %>
 	</div>
-	<div>
-		<p>stock</p>
-		<%= @plan.stock %>
-	</div>
-	<div>
-		<p>price</p>
+	<div class="reserve-confirm">
+		<p class="reserve-confirm-price">値段</p>
 		<%= @plan.price %>
 	</div>
-	<div>
-		<p>sale_from</p>
-		<%= @plan.sale_from %>
-	</div>
-	<div>
-		<p>sale_to</p>
-		<%= @plan.sale_to %>
-	</div>
-	<div>
-		<p>room_type</p>
+	<div class="reserve-confirm">
+		<p class="reserve-confirm-roomtype">部屋タイプ</p>
 		<%= @plan.room_type %>
 	</div>
-	<div>
+	<div class="reserve-confirm">
 		<p>コインが1枚減ります。</p>
 		<%= "残り#{@user.coin-1}枚" %>
 	</div>
-	<div>
-		<%= link_to "予約完了する", "reserve/create/#{@plan.id}" %>
+	<div class="reserve-confirm">
+		<%= link_to "予約完了する", "reserve/create/#{@plan.id}", class: "edit-button"%>
 	</div>
 </div>
