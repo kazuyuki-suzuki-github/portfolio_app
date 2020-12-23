@@ -1,13 +1,25 @@
 <div>
 	<div>
-		<p>name</p>
-		<% @plans_search_result.to_a.each{ |plan| %>
-			<div>
-				<%= plan['c_name'] %>
-				<%= plan['c_access'] %>
-				<%= plan['p_name'] %>
-				<%= plan['p_price'] %>
-				<%= link_to "詳細", plan_path(plan['p_id']) %>
+		<% @search_result.each{ |company| %>
+			<div class="search-result-company">
+				<p>施設写真</p>
+				<% if company.portraits.attached? %>
+					<% company.portraits.each do |portrait| %>
+						<%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
+					<% end %>
+				<% end %>
+				<p>施設名</p>
+				<%= company.name %>
+				<p>アクセス</p>
+				<%= company.access %>
+				<% company.plans.each{ |plan| %>
+					<p>プラン名</p>
+					<%= plan.name %>
+					<p>値段</p>
+					<%= plan.price %>
+					<p>
+					<p><%= link_to "詳細", plan_path(plan.id) ,class: "edit-button" %></p>
+				<% } %>
 			</div>
 		<% } %>
 	</div>
