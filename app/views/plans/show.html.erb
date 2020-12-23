@@ -1,41 +1,39 @@
-<h1>Plans#show</h1>
-<p>Find me in app/views/plans/show.html.erb</p>
-
-<div>
-	<div>
-		<p>name</p>
+<div class="wrap-left">
+	<h2>宿泊プラン</h2>
+	<div class="show-plan">
+		<p class="edit-plan-label-name">プラン名</p>
 		<%= @plan.name %>
 	</div>
-	<div>
-		<p>check_in</p>
+	<div class="show-plan">
+		<p class="edit-plan-label-checkin">チェックイン</p>
 		<%= @plan.check_in.strftime("%R") %>
 	</div>
-	<div>
-		<p>check_out</p>
+	<div class="show-plan">
+		<p class="edit-plan-label-checkout">チェックアウト</p>
 		<%= @plan.check_out.strftime("%R") %>
 	</div>
-	<div>
-		<p>stock</p>
+	<div class="show-plan">
+		<p class="edit-plan-label-stock">在庫</p>
 		<%= @plan.stock %>
 	</div>
-	<div>
-		<p>price</p>
+	<div class="show-plan">
+		<p class="edit-plan-label-price">値段</p>
 		<%= @plan.price %>
 	</div>
-	<div>
-		<p>sale_from</p>
+	<div class="show-plan">
+		<p class="edit-plan-label-salefrom">販売開始</p>
 		<%= @plan.sale_from %>
 	</div>
-	<div>
-		<p>sale_to</p>
+	<div class="show-plan">
+		<p class="edit-plan-label-saleto">販売終了</p>
 		<%= @plan.sale_to %>
 	</div>
-	<div>
-		<p>room_type</p>
+	<div class="show-plan">
+		<p class="edit-plan-label-roomtype">部屋タイプ</p>
 		<%= @plan.room_type %>
 	</div>
-	<div>
-		<p>portraits</p>
+	<div class="show-plan">
+		<p class="edit-plan-label-portraits">プラン写真</p>
 		<% if @plan.portraits.attached? %>
 			<% @plan.portraits.each do |portrait| %>
 				<%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
@@ -43,6 +41,6 @@
 	<% end %>
 </div>
 	<div>
-		<%= link_to "予約する", "reserve/confirm/#{@plan.id}" %>
+		<%= link_to "予約する", "reserve/confirm/#{@plan.id}", class: "edit-button" %>
 	</div>
 </div>
