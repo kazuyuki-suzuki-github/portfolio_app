@@ -13,9 +13,6 @@ class SearchController < ApplicationController
     end
     
     @prefecture_id = params[:search][:prefecture_id]
-    #@checkin = params[:search][:checkin]
-    #@checkout = params[:search][:checkout]
-    #@people = params[:search][:people]
     session[:checkin] = params[:search][:checkin]
     session[:checkout] = params[:search][:checkout]
     session[:people] = params[:search][:people]
@@ -27,22 +24,6 @@ class SearchController < ApplicationController
   
     @result = PlanFeature.select('plans_id, count(plans_id)').where(features_id: @search_features).group(:plans_id).order('count(plans_id) desc')
     @result_plans_id = @result.map{|i| i.plans_id}
-    logger.debug("#{@result_plans_id}")
-
-    sql =  
-      "select
-        p.*
-      from
-        companies c
-          inner join plans p on
-          p.company_id = c.id
-      where
-        c.prefecture_id = ?
-        and p.sale_from <= ?
-        and p.sale_to >= ?
-        and p.id IN (?)
-      "
-    @plans_search_result = Plan.find_by_sql(
-      [sql,@prefecture_id, params[:search][:checkin], params[:search][:checkout],@result_plans_id])
+    @search_result = Company.includes(:plans).where(plans:{id: @result_plans_id})
   end
 end

@@ -1,12 +1,17 @@
-<h1>Search#result</h1>
-<p>Find me in app/views/search/result.html.erb</p>
-
-<div>
-	<%= @prefecture_id %>
-	<%= session[:checkin] %>
-	<%= session[:checkout] %>
-	<%= session[:people] %>
-</div>
-<div>
-	<%= render 'plans_search_result' %>
+<div class="wrap-left">
+	<h2>検索結果</h2>
+	<div class="search-conditions">
+		<h4>検索条件</h4>
+		<p>都道府県</p>
+		<%= Prefecture.find(@prefecture_id).name %>
+		<p>チェックイン日</p>
+		<%= session[:checkin] %>
+		<p>チェックアウト日</p>
+		<%= session[:checkout] %>
+		<p>人数</p>
+		<%= session[:people] %>
+	</div>
+	<div>
+		<%= render 'plans_search_result' %>
+	</div>
 </div>
