@@ -42,5 +42,7 @@
 </div>
 	<div>
 		<%= link_to "予約する", "reserve/confirm/#{@plan.id}", class: "edit-button" %>
+		
+		<%= link_to "予約する", confirm_reserve_path(@plan.id), class: "edit-button" %>
 	</div>
 </div>

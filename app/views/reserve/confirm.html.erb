@@ -32,6 +32,9 @@
 		<%= "残り#{@user.coin-1}枚" %>
 	</div>
 	<div class="reserve-confirm">
-		<%= link_to "予約完了する", "reserve/create/#{@plan.id}", class: "edit-button"%>
+		<%= form_tag(reserve_index_path, method: :post) do %>
+			<%= hidden_field_tag :id, @plan.id %>
+			<%= submit_tag("予約完了する", class: "edit-button") %>
+		<% end %>
 	</div>
 </div>
