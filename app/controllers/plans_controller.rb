@@ -151,6 +151,7 @@ class PlansController < ApplicationController
   
   def show
     @plan = Plan.find_by(id: params[:id])
+    render 'show'
   end
   
   private

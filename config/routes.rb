@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'plans/reserve/confirm/reserve/create/:id', to:'reserve#create'
-  get 'plans/reserve/confirm/:id', to:'reserve#confirm'
   get 'search/result'
   get 'plans/new'
   root 'home#top'
@@ -12,6 +10,10 @@ Rails.application.routes.draw do
   resources :users
   resources :companies
   resources :plans
-  resources :reserve
+  resources :reserve do
+    member do
+      get :confirm
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
