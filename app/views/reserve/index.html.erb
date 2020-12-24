@@ -1,20 +1,35 @@
-<h1>Reserve#index</h1>
-<p>Find me in app/views/reserve/index.html.erb</p>
-
-<h2>予約一覧</h2>
-<div>
-	<% @reserves.each { |reserve| %>
-		<div>
-			<p>company_id</p>
-			<%= reserve.company_id %>
-		</div>
-		<div>
-			<p>plan_id</p>
-			<%= reserve.plan_id %>
-		</div>
-		<div><%= button_to "削除", reserve_path(reserve.id), method: :delete %></div>
-	<% } %>
+<div class="wrap-left">
+	<h2>予約一覧</h2>
+	<% if @reserves.present? %>
+		<% @reserves.each { |reserve| %>
+			<div class="reserve-area">
+				<div class="reserve-confirm">
+					<p class="reserve-confirm-companyid">施設ID</p>
+					<%= reserve.company_id %>
+				</div>
+				<div class="reserve-confirm">
+					<p class="reserve-confirm-planid">ブランID</p>
+					<%= reserve.plan_id %>
+				</div>
+				<% reserve.reserve_details.each { |detail| %>
+					<div class="reserve-confirm">
+						<p class="reserve-confirm-day">日程</p>
+						<%= "#{detail.check_in} - #{detail.check_out}" %>
+					</div>
+					<div class="reserve-confirm">
+						<p class="reserve-confirm-people">人数</p>
+						<%= detail.people %>
+					</div>
+				<% } %>
+				<div class="reserve-confirm">
+					<%= button_to "削除", reserve_path(reserve.id), method: :delete, class: "edit-button"%>
+				</div>
+			</div>
+		<% } %>
+	<% else %>
+		<h3>予約はありません</h3>
+	<% end %>
 	<div>
-		<%= link_to "トップページ", root_path %>
+		<%= link_to "トップページ", root_path, class: "edit-button" %>
 	</div>
 </div>

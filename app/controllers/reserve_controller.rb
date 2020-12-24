@@ -28,7 +28,17 @@ class ReserveController < ApplicationController
   end
   
   def index
-    @reserves = Reserve.where(user_id: current_user.id)
+    #@reserves = Reserve.where(user_id: current_user.id)
+    @reserves = Reserve.joins(:reserve_details).where(reserves: {user_id: current_user.id})
+    logger.debug("★★★")
+    @reserves.each do |reserve|
+      logger.debug(reserve.attributes)
+      logger.debug(reserve.plan_id)
+      reserve.reserve_details.each do |detail|
+        logger.debug(detail.people)
+      end
+    end
+    logger.debug("★★★")
   end
   
   def destroy
