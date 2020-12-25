@@ -35,7 +35,7 @@
         </div>
         <div class="company-contents-detail">
           <p class="company-contents-label">施設情報</p>
-          <%= @company.info %>
+          <%=safe_join(@company.info.split("\n"),tag(:br))%>
         </div>
         <div class="company-contents-detail">
           <p class="company-contents-label">施設写真</p>
