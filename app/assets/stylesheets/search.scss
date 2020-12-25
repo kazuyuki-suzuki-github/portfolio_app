@@ -16,3 +16,20 @@
   border-radius: 5px;
   margin: 5px;
 }
+
+.slider {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider .slideSet {
+	position: absolute;
+}
+
+.slider .slide {
+  width: 298px;
+  height: 298px;
+  float: left;
+}
