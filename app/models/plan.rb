@@ -9,4 +9,5 @@ class Plan < ApplicationRecord
     validates :sale_to, presence: true
     validates :room_type, presence: true
     belongs_to :company
+    has_many :reserves
 end

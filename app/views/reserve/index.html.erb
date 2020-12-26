@@ -4,12 +4,12 @@
 		<% @reserves.each { |reserve| %>
 			<div class="reserve-area">
 				<div class="reserve-confirm">
-					<p class="reserve-confirm-companyid">施設ID</p>
-					<%= reserve.company_id %>
+					<p class="reserve-confirm-companyid">施設名</p>
+					<%= reserve.company.name %>
 				</div>
 				<div class="reserve-confirm">
-					<p class="reserve-confirm-planid">ブランID</p>
-					<%= reserve.plan_id %>
+					<p class="reserve-confirm-planid">ブラン名</p>
+					<%= reserve.plan.name %>
 				</div>
 				<% reserve.reserve_details.each { |detail| %>
 					<div class="reserve-confirm">
