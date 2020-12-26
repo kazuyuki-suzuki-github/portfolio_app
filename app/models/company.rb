@@ -9,4 +9,5 @@ class Company < ApplicationRecord
     validates :prefecture_id, presence: true
     belongs_to :user
     has_many :plans
+    has_many :reserves
 end
