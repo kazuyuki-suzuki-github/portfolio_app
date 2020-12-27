@@ -9,6 +9,11 @@
 	</div>
 	<div class="plan-contents-detail">
 		<%= link_to "編集", edit_plan_path(plan.id) , class: 'edit-button' %>
-		<%= link_to "削除", plan_path(plan.id), method: :delete, class:'delete-button' %>
+		<!--
+		<%= link_to "削除", plan_path(plan.id), method: :delete, data: { confirm: '削除してよろしいですか？' }, class:'delete-button' %>
+		-->
+		<div>
+			<%= button_to "削除", plan_path(plan.id), method: :delete, data: { confirm: '宿泊プランを削除してよろしいですか？'}, class: 'delete-field' %>
+		</div>
 	</div>
 </div>

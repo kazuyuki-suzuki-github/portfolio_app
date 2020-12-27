@@ -22,7 +22,7 @@
 					</div>
 				<% } %>
 				<div class="reserve-confirm">
-					<%= button_to "削除", reserve_path(reserve.id), method: :delete, class: "edit-button"%>
+					<%= button_to "削除", reserve_path(reserve.id), method: :delete, data: { confirm: '予約を削除してよろしいですか？'}, class: "delete-field"%>
 				</div>
 			</div>
 		<% } %>

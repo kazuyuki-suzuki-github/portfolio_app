@@ -25,10 +25,10 @@
 			<%= f.password_field :password_confirmation, class: 'password-confirmation-field' %>
 		</div>
 		<div class="field">
-			<%= f.submit "Change", class: 'change-field' %>
+			<%= f.submit "更新", class: 'change-field' %>
 		</div>
   <% end %>
 	<div class="field">
-		<div><%= button_to "Delete", user_path(@user.id), method: :delete, class: 'delete-field' %></div>
+		<div><%= button_to "削除", user_path(@user.id), method: :delete, data: { confirm: 'アカウントを削除してよろしいですか？'}, class: 'delete-field' %></div>
 	</div>
 </div>
