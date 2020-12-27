@@ -1,4 +1,25 @@
 $(function() {
+  
+  // 確認ダイアログ
+  class Confirm {
+    constructor(e) {
+      this.message = e.getAttribute('data-confirm')
+      if (this.message) {
+        e.form.addEventListener('submit', this.confirm.bind(this))
+      }
+    }
+
+    confirm(e) {
+      if (!window.confirm(this.message)) {
+        e.preventDefault();
+      }
+    }
+  }
+
+  Array.from($('[data-confirm]')).forEach((el) => {
+    new Confirm(el)
+  })
+
   $(".panel-btn").click(function(){
     var clickPanel = $("+.panel",this);
     clickPanel.toggle();
