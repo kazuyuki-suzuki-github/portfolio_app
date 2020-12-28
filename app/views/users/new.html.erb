@@ -1,31 +1,24 @@
 <div class="wrap-center">
 	<h1>Sign up</h1>
   <%= form_with(model: @user, local: true) do |f| %>
-		<% if @user.errors.any? %>
-			<ul>
-				<% @user.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-				<% end %>
-			</ul>
-		<% end %>
-		<div class="field">
-			<p><%= f.label :name, class: 'name-label' %></p>
-			<%= f.text_field :name, class: 'name-field' %>
+		<div class="input-area">
+			<p><%= f.label :name, class: "label"%></p>
+			<%= f.text_field :name, class: "field-1"%>
 		</div>
-		<div class="field">
-			<p><%= f.label :email, class: 'email-label' %></p>
-			<%= f.email_field :email, class: 'email-field' %>
+		<div class="input-area">
+			<p><%= f.label :email, class: "label"%></p>
+			<%= f.email_field :email, class: "field-1"%>
 		</div>
-		<div class="field">
-			<p><%= f.label :password, class: 'password-label' %></p>
-			<%= f.password_field :password, class: 'password-field' %>
+		<div class="input-area">
+			<p><%= f.label :password, class: "label"%></p>
+			<%= f.password_field :password, class: "field-1"%>
 		</div>
-		<div class="field">
-			<p><%= f.label :password_confirmation, "Confirmation", class: 'password-confirmation-label' %></p>
-			<%= f.password_field :password_confirmation, class: 'password-confirmation-field' %>
+		<div class="input-area">
+			<p><%= f.label :password_confirmation, class: "label"%></p>
+			<%= f.password_field :password_confirmation, class: "field-1"%>
 		</div>
-		<div class="field">
-			<%= f.submit "Sign up", class: 'signup-field' %>
+		<div class="button-area">
+			<%= f.submit "Sign up", class: "button"%>
 		</div>
   <% end %>
 </div>
