@@ -43,17 +43,19 @@
 	padding-left: 5px;
 }
 
-.search-field{
-    background-color: #00234B;
+.search-button{
+  background-color: #00234B;
 	color: white;
 	width: 100px;
 	height: 40px;
-    border-radius: 5px;
-    font-size: 20px;
+	border-radius: 5px;
+	font-size: 20px;
 	padding: 5px 15px;
-	clear:left;
 	text-align: center;
+}
 
+.search-field{
+clear:left;
 }
 
 .work_features input, .vacation_features input{
