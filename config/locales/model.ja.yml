@@ -10,3 +10,9 @@ ja:
         prefecture_id: 目的地
         checkin: チェックイン日
         checkout: チェックアウト日
+      company:
+        name: 施設名
+        address: 住所
+        access: アクセス
+        info: 施設情報
+        prefecture: 都道府県

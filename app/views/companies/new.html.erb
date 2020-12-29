@@ -1,42 +1,35 @@
 <div class="wrap-left">
 	<h2>施設を登録する</h2>
 	<%= form_with(model: @company, local: true) do |f| %>
-		<% if @company.errors.any? %>
-			<ul>
-				<% @company.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-				<% end %>
-			</ul>
-		<% end %>
 		<div>
 			<%= f.hidden_field :user_id, :value => current_user.id, class: 'form-control' %>
 		</div>
-		<div class="edit-company">
-			<p><%= f.label :name , class: "edit-company-label-name"%></p>
-			<%= f.text_field :name, class: 'form-control edit-company-form-name' %>
+		<div class="input-area">
+			<p><%= f.label :name , class: "label" %></p>
+			<%= f.text_field :name, class: "field-2" %>
 		</div>
-		<div class="edit-company">
-			<p><%= f.label :prefecture, class: "edit-company-label-prefecture" %></p>
-			<%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class:"edit-company-form-prefecture" %>
+		<div class="input-area">
+			<p><%= f.label :prefecture, class: "label" %></p>
+			<%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "field-1" %>
 		</div>
-		<div class="edit-company">
-			<p><%= f.label :address, class: "edit-company-label-address" %></p>
-			<%= f.text_field :address, class: 'form-control edit-company-form-address' %>
+		<div class="input-area">
+			<p><%= f.label :address, class: "label" %></p>
+			<%= f.text_field :address, class: "field-2" %>
 		</div>
-		<div class="edit-company">
-			<p><%= f.label :access, class: "edit-company-label-access" %></p>
-			<%= f.text_field :access, class: 'form-control edit-company-form-access' %>
+		<div class="input-area">
+			<p><%= f.label :access, class: "label" %></p>
+			<%= f.text_field :access, class: "field-2" %>
 		</div>
-		<div class="edit-company">
-			<p><%= f.label :info, class: "edit-company-label-info" %></p>
-			<%= f.text_area :info, class: 'form-control edit-company-form-info' %>
+		<div class="input-area">
+			<p><%= f.label :info, class: "label" %></p>
+			<%= f.text_area :info, class: "text-area" %>
 		</div>
-		<div class="edit-company">
-			<p><p class="edit-company-label-portraits">施設写真</p>
+		<div class="input-area">
+			<p><p class="label">施設写真</p>
 			<%= f.file_field :portraits, direct_upload: true, multiple: true %>
 		</div>	
-		<div class="edit-company">
-			<%= f.submit "登録", class: "edit-button" %>
+		<div class="button-area">
+			<%= f.submit "登録", class: "button" %>
 		</div>
   <% end %>
 </div>

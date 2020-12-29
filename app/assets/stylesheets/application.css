@@ -46,6 +46,18 @@
   width: 300px;
   border-radius: 5px;
 }
+.field-2{
+  background-color: white;
+  height: 35px;
+  width: 500px;
+  border-radius: 5px;
+}
+.text-area{
+  background-color: white;
+  height: 150px;
+  width: 500px;
+  border-radius: 5px;
+}
 .button-area{
   padding:20px 0;
   clear:left;

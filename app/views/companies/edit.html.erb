@@ -1,35 +1,28 @@
 <div class="wrap-left">
 <h2>施設を編集する</h2>
   <%= form_with(url:company_path, model: @company, method: :put, local: true) do |f| %>
-    <% if @company.errors.any? %>
-      <ul>
-        <% @company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
     <div>
       <%= f.hidden_field :user_id, :value => current_user.id, class: 'form-control' %>
     </div>
-    <div class="edit-company">
-      <p><%= f.label :name ,class: "edit-company-label-name"%></p>
-      <%= f.text_field :name, class: 'form-control edit-company-form-name' %>
+    <div class="input-area">
+      <p><%= f.label :name ,class: "label" %></p>
+      <%= f.text_field :name, class: "field-2" %>
     </div>
-    <div class="edit-company">
-      <p><%= f.label :address ,class: "edit-company-label-address"%></p>
-      <%= f.text_field :address, class: 'form-control edit-company-form-address' %>
+    <div class="input-area">
+      <p><%= f.label :address ,class: "label" %></p>
+      <%= f.text_field :address, class: "field-2" %>
     </div>
-    <div class="edit-company">
-      <p><%= f.label :access ,class: "edit-company-label-access"%></p>
-      <%= f.text_field :access, class: 'form-control edit-company-form-access' %>
+    <div class="input-area">
+      <p><%= f.label :access ,class: "label" %></p>
+      <%= f.text_field :access, class: "field-2" %>
     </div>
-    <div class="edit-company">
-      <p><%= f.label :info ,class: "edit-company-label-info"%></p>
-      <%= f.text_area :info, class: 'form-control edit-company-form-info' %>
+    <div class="input-area">
+      <p><%= f.label :info ,class: "label" %></p>
+      <%= f.text_area :info, class: "text-area" %>
       
     </div>
-    <div class="edit-company">
-      <p class="edit-company-label-portraits">施設写真</p>
+    <div class="input-area">
+      <p class="label">施設写真</p>
       <% if @company.portraits.attached? %>
         <% @company.portraits.each do |portrait| %>
             <%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
@@ -37,12 +30,12 @@
         <% end %>
       <% end %>
     </div>
-    <div class="edit-company">
-      <p><%= f.label "施設写真を更新する", class: "edit-company-label-portraits-update" %></p>
+    <div class="input-area">
+      <p><%= f.label "施設写真を更新する", class: "label" %></p>
       <%= f.file_field :portraits, direct_upload: true, multiple: true %>
     </div>
-    <div>
-      <%= f.submit "更新" ,class: "edit-button"%>
+    <div class="button-area">
+      <%= f.submit "更新" ,class: "button" %>
     </div>
   <% end %>
 </div>
