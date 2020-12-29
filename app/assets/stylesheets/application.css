@@ -48,6 +48,7 @@
 }
 .button-area{
   padding:20px 0;
+  clear:left;
 }
 .button{
   background-color: #17184b;

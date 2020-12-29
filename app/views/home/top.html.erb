@@ -1,35 +1,27 @@
 <div class="wrap-left">
 	<%= form_with url:search_result_path, model: @search, method: :get, local: true do |f| %>
 		<h2>気になるキーワードを選択し、お得なプランを見つけよう！</h2>
-		<% if @search.errors.any? %>
-	  		<ul>
-	    		<% @search.errors.full_messages.each do |message| %>
-	      		<li><%= message %></li>
-	    		<% end %>
-	  		</ul>
-		<% end %>
-
-		<div class="search-condition">
-			<p class="search-condition-label">目的地</p>
-			<%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank:"選択"}, class:'prefecture-field'%>
+		<div class="input-area">
+			<p class="label">目的地</p>
+			<%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank:"選択"}, class:"field-1" %>
 		</div>
 
-		<div class="search-condition">
-			<p class="search-condition-label">チェックイン</p>
-			<%= f.date_field :checkin, value: f.object.checkin, class: 'form-control checkin-field' %>
+		<div class="input-area">
+			<p class="label">チェックイン</p>
+			<%= f.date_field :checkin, value: f.object.checkin, class: "field-1" %>
 		</div>
 
-		<div class="search-condition">
-			<p class="search-condition-label">チェックアウト</p>
-			<%= f.date_field :checkout, value: f.object.checkout, class: 'form-control checkout-field' %>
+		<div class="input-area">
+			<p class="label">チェックアウト</p>
+			<%= f.date_field :checkout, value: f.object.checkout, class: "field-1" %>
 		</div>
 
-		<div class="search-condition">
-			<p class="search-condition-label">人数</p>
-			<%= f.select :people, {'1':1,'2':2,'3':3,'4':4,'5':5}, {}, class: 'form-control people-field' %>
+		<div class="input-area">
+			<p class="label">人数</p>
+			<%= f.select :people, {'1':1,'2':2,'3':3,'4':4,'5':5}, {}, class: "field-1" %>
 		</div>
 
-		<div class="search-condition">
+		<div class="input-area">
 			<div>働くのキーワード</div>
 			<div class="work_features">
 				<% @work_features.each do |wf| %>
@@ -39,7 +31,7 @@
 			</div>
 		</div>
 
-		<div class="search-condition">
+		<div class="input-area">
 			<div style="clear:left;">遊びのキーワード</div>
 			<div class="vacation_features">
 				<% @vacation_features.each do |vf| %>
@@ -49,8 +41,8 @@
 			</div>
 		</div>
 		
-		<div class="search-field">
-			<%= f.submit "検索", class:"search-button"%>
+		<div class="button-area">
+			<%= f.submit "検索", class: "button" %>
 		</div>
 	<% end %>
 </div>

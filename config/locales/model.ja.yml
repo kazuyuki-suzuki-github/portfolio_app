@@ -6,3 +6,7 @@ ja:
         email: Email
         password: パスワード
         password_confirmation: パスワード（確認）
+      search:
+        prefecture_id: 目的地
+        checkin: チェックイン日
+        checkout: チェックアウト日
