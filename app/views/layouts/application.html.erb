@@ -35,12 +35,12 @@
 							</li>
 						<% end %>
 						<% if logged_in? %>
-							<li><%= link_to "Log out", logout_path %></li>
+							<li><%= link_to "ログアウト", logout_path %></li>
 						<% end %>
 						<% if !logged_in? %>
-							<li><%= link_to "Log in", login_path %></li>
+							<li><%= link_to "ログイン", login_path %></li>
 						<% end %>
-						<li><%= link_to "Sign up", new_user_path %></li>
+						<li><%= link_to "サインアップ", new_user_path %></li>
 						<li><%= link_to "宿泊施設を登録する", companies_path %></li>
 						
 					</ul>

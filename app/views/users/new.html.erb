@@ -1,5 +1,5 @@
 <div class="wrap-center">
-	<h1>Sign up</h1>
+	<h1>サインアップ</h1>
   <%= form_with(model: @user, local: true) do |f| %>
 		<div class="input-area">
 			<p><%= f.label :name, class: "label"%></p>
@@ -18,7 +18,7 @@
 			<%= f.password_field :password_confirmation, class: "field-1"%>
 		</div>
 		<div class="button-area">
-			<%= f.submit "Sign up", class: "button"%>
+			<%= f.submit "サインアップ", class: "button"%>
 		</div>
   <% end %>
 </div>

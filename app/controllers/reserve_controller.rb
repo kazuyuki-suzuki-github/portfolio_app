@@ -1,5 +1,4 @@
 class ReserveController < ApplicationController
-  
   require "date"
   
   def create
@@ -23,19 +22,13 @@ class ReserveController < ApplicationController
       @plan = Plan.find(params[:id])
       @user = User.find(session[:user_id])
     else
-      redirect_to login_path
+      flash.now[:notice] = "ログインしてください"
+      render "sessions/new"
     end
   end
   
   def index
-    #@reserves = Reserve.joins(:reserve_details).where(reserves: {user_id: current_user.id})
     @reserves = Reserve.joins(:plan).joins(:company).joins(:reserve_details).where(reserves: {user_id: current_user.id})
-    #logger.debug("★★★")
-    #@reserves_2.each do |reserve|
-    #  logger.debug(reserve.plan.name)
-    #  logger.debug(reserve.company.name)
-    #end
-    #logger.debug("★★★")
   end
   
   def destroy
