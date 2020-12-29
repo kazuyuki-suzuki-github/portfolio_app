@@ -16,3 +16,12 @@ ja:
         access: アクセス
         info: 施設情報
         prefecture: 都道府県
+      plan:
+        name: 宿泊プラン名
+        check_in: チェックイン時刻
+        check_out: チェックアウト時刻
+        stock: 在庫
+        price: 値段（1泊あたり）
+        sale_from: 販売開始日
+        sale_to: 販売終了日
+        room_type: 部屋タイプ

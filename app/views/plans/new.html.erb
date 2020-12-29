@@ -1,68 +1,61 @@
 <div class="wrap-left">
 	<h2>宿泊プランを登録する</h2>
 	<%= form_with(url: plans_path, model: @plan, local: true) do |f| %>
-		<% if @plan.errors.any? %>
-			<ul>
-				<% @plan.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-				<% end %>
-			</ul>
-		<% end %>
 		<div>
 			<%= f.hidden_field :company_id, :value => @company.id, class: 'form-control' %>
 		</div>
-		<div class="edit-plan">
-			<p><%= f.label :name, class: "edit-plan-label-name"%></p>
-			<%= f.text_field :name, class: 'form-control edit-plan-form-name'%>
+		<div class="input-area">
+			<p><%= f.label :name, class: "label" %></p>
+			<%= f.text_field :name, class: "field-2" %>
 		</div>
-		<div class="edit-plan">
-			<p><%= f.label :check_in, class: "edit-plan-label-checkin"%></p>
-			<%= f.time_field :check_in, class: 'form-control edit-plan-form-checkin'%>
+		<div class="input-area">
+			<p><%= f.label :check_in, class: "label" %></p>
+			<%= f.time_field :check_in, class: "field-1" %>
 		</div>
-		<div class="edit-plan">
-			<p><%= f.label :check_out, class: "edit-plan-label-checkout"%></p>
-			<%= f.time_field :check_out, class: 'form-control edit-plan-form-checkout'%>
+		<div class="input-area">
+			<p><%= f.label :check_out, class: "label" %></p>
+			<%= f.time_field :check_out, class: "field-1" %>
 		</div>
-		<div class="edit-plan">
-			<p><%= f.label :stock, class: "edit-plan-label-stock"%></p>
-			<%= f.number_field :stock, class: 'form-control edit-plan-form-stock'%>
+		<div class="input-area">
+			<p><%= f.label :stock, class: "label" %></p>
+			<%= f.number_field :stock, class: "field-1" %>
 		</div>
-		<div class="edit-plan">
-			<p><%= f.label :price, class: "edit-plan-label-price"%></p>
-			<%= f.number_field :price, class: 'form-control edit-plan-form-price'%>
+		<div class="input-area">
+			<p><%= f.label :price, class: "label" %></p>
+			<%= f.number_field :price, class: "field-1" %>
 		</div>
-		<div class="edit-plan">
-			<p><%= f.label :sale_from, class: "edit-plan-label-salefrom"%></p>
-			<%= f.date_field :sale_from, class: 'form-control edit-plan-form-salefrom'%>
+		<div class="input-area">
+			<p><%= f.label :sale_from, class: "label" %></p>
+			<%= f.date_field :sale_from, class: "field-1" %>
 		</div>
-		<div class="edit-plan">
-			<p><%= f.label :sale_to, class: "edit-plan-label-saleto"%></p>
-			<%= f.date_field :sale_to, class: 'form-control edit-plan-form-saleto'%>
+		<div class="input-area">
+			<p><%= f.label :sale_to, class: "label" %></p>
+			<%= f.date_field :sale_to, class: "field-1" %>
 		</div>
-		<div class="edit-plan">
-			<p><%= f.label :room_type, class: "edit-plan-label-roomtype"%></p>
-			<%= f.select :room_type, @room_type.map{|r| [r.name, r.id]}, {}, class: 'edit-plan-form-roomtype'%>
+		<div class="input-area">
+			<p><%= f.label :room_type, class: "label" %></p>
+			<%= f.select :room_type, @room_type.map{|r| [r.name, r.id]}, {}, class: "field-1" %>
 		</div>
-		<div class="edit-plan">
-			<p class="edit-plan-label-workfeatures">仕事のキーワード</p>
+		<div class="input-area">
+			<p class="label">仕事のキーワード</p>
 			<% @work_features.each do |wf| %>
 				<%= f.check_box :work_features, {multiple: true}, wf.id, nil%>
 				<%= wf.name %>
 			<% end %>
 		</div>
-		<div class="edit-plan">
-			<p class="edit-plan-label-vacationfeatures">遊びのキーワード</p>
+		<div class="input-area">
+			<p class="label">遊びのキーワード</p>
 			<% @vacation_features.each do |vf| %>
 				<%= f.check_box :vacation_features, {multiple: true}, vf.id, nil  %>
 				<%= vf.name %>
 			<% end %>
 		</div>
-		<div class="edit-plan">
-			<p class="edit-plan-label-portraits">プラン写真</p>
+		<div class="input-area">
+			<p class="label">プラン写真</p>
 			<%= f.file_field :portraits, direct_upload: true, multiple: true %>
 		</div>
-		<div class="edit-plan">
-			<%= f.submit "登録" ,class: "edit-button"%>
+		<div class="button-area">
+			<%= f.submit "登録" ,class: "button" %>
 		</div>
 	<% end %>
 </div>
