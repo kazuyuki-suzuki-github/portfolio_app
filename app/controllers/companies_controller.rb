@@ -1,10 +1,15 @@
 class CompaniesController < ApplicationController
   
   def index
-    @company = Company.find_by(user_id: current_user.id)
-    if !@company.nil?
-      @plans = Plan.where(company_id: @company.id)
-      @id = @company.id
+    if logged_in?
+      @company = Company.find_by(user_id: current_user.id)
+      if !@company.nil?
+        @plans = Plan.where(company_id: @company.id)
+        @id = @company.id
+      end
+    else
+      flash.now[:notice] = "ログインしてください"
+      render "sessions/new"
     end
   end
   
