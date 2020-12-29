@@ -1,0 +1,5 @@
+ja:
+  errors:
+    messages:
+      validateCheckoutAfterCheckinMessage: チェックアウト日はチェックイン日より後の日付にしてください
+      validateDayAfterTodayMessage: 本日以降の日付を入力してください

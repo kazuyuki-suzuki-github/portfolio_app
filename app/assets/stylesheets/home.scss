@@ -1,63 +1,6 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.search-condition {
-	padding: 5px 0;
-}
-
-.search-condition-label {
-	font-size: 13px;
-}
-
-.prefecture-field {
-	background-color: white;
-	color:#00234B;
-	width: 200px;
-	height: 40px;
-	border-radius: 5px;
-	padding-left: 5px;
-}
-
-.checkin-field {
-	background-color: white;
-	color:#00234B;
-	width: 200px;
-	height: 40px;
-	border-radius: 5px;
-}
-
-.checkout-field {
-	background-color: white;
-	color:#00234B;
-	width: 200px;
-	height: 40px;
-	border-radius: 5px;
-}
-
-.people-field {
-	background-color: white;
-	color:#00234B;
-	width: 200px;
-	height: 40px;
-	border-radius: 5px;
-	padding-left: 5px;
-}
-
-.search-button{
-  background-color: #00234B;
-	color: white;
-	width: 100px;
-	height: 40px;
-	border-radius: 5px;
-	font-size: 20px;
-	padding: 5px 15px;
-	text-align: center;
-}
-
-.search-field{
-clear:left;
-}
-
 .work_features input, .vacation_features input{
 	display: none;
 }

@@ -7,15 +7,19 @@ class Search include ActiveModel::Model
 
 	validate :validateCheckoutAfterCheckin
 	validate :validateDayAfterToday
-	
+
   def validateCheckoutAfterCheckin
-    errors.add(:checkout, "チェックアウト日はチェックイン日より後の日付にしてください") if checkin > checkout
+		if checkin.present? && checkout.present?
+    	errors.add(:checkout, :validateCheckoutAfterCheckinMessage) if checkin > checkout
+		end
 	end
 		
 	def validateDayAfterToday
-		if checkin.present? && checkout.present?
-			errors.add(:checkin, "本日以降の日付を入力してください") if Time.parse(checkin) < Date.today
-			errors.add(:checkout, "本日以降の日付を入力してください") if Time.parse(checkout) < Date.today
+		if checkin.present?
+			errors.add(:checkin, :validateDayAfterTodayMessage) if Time.parse(checkin) < Date.today
+		end
+		if checkout.present?
+			errors.add(:checkout, :validateDayAfterTodayMessage) if Time.parse(checkout) < Date.today
 		end
 	end
 end
