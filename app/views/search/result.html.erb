@@ -1,15 +1,41 @@
 <div class="wrap-left">
-	<h2>検索結果</h2>
 	<div class="search-conditions">
-		<h4>検索条件</h4>
-		<p>都道府県</p>
-		<%= Prefecture.find(@prefecture_id).name %>
-		<p>チェックイン日</p>
-		<%= session[:checkin] %>
-		<p>チェックアウト日</p>
-		<%= session[:checkout] %>
-		<p>人数</p>
-		<%= session[:people] %>
+		<div class="base">
+			<div class="prefecture">
+				<p>都道府県</p>
+				<%= Prefecture.find(@prefecture_id).name %>
+			</div>
+			<div class="checkinout">
+				<p>チェックイン日</p>
+				<%= session[:checkin] %>
+			</div>
+			<div class="checkinout">
+				<p>チェックアウト日</p>
+				<%= session[:checkout] %>
+			</div>
+			<div class="people">
+				<p>人数</p>
+				<%= session[:people] %>
+			</div>
+		</div>
+		<div class="features">
+			<div class="feature">
+				<p>働くのキーワード</p>
+				<% @work_features.each do |wf| %>
+					<% if @sfw.include?(wf.id.to_s) %>
+						<span class="work-feature"><%= wf.name %></span>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="feature">
+				<p>遊びのキーワード</p>
+				<% @vacation_features.each do |vf| %>
+					<% if @sfv.include?(vf.id.to_s) %>
+					<span class="vacation-feature"><%= vf.name %></span>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
 	</div>
 	<div>
 		<%= render 'plans_search_result' %>
