@@ -6,7 +6,12 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to request.referer
+      path = Rails.application.routes.recognize_path(request.referer)
+      if path[:controller] == "reserve"
+        redirect_to request.referer
+      else
+        redirect_to root_path
+      end
     else
       flash.now[:alert] = "ログインできませんでした"
       render 'new'
