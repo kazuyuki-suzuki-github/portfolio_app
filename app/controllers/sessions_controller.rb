@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       path = Rails.application.routes.recognize_path(request.referer)
-      if path[:controller] == "reserve" || path[:controller] == "company"
+      if path[:controller] == "reserve"
         redirect_to request.referer
       else
         redirect_to root_path
