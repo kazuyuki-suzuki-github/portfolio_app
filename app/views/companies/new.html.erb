@@ -1,5 +1,5 @@
 <div class="wrap-left">
-	<h2>施設を登録する</h2>
+	<h2>宿泊施設を登録する</h2>
 	<%= form_with(model: @company, local: true) do |f| %>
 		<div>
 			<%= f.hidden_field :user_id, :value => current_user.id, class: 'form-control' %>
@@ -26,7 +26,7 @@
 		</div>
 		<div class="input-area">
 			<p><p class="label">施設写真</p>
-			<%= f.file_field :portraits, direct_upload: true, multiple: true %>
+			<%= f.file_field :portrait, direct_upload: true, multiple: false %>
 		</div>	
 		<div class="button-area">
 			<%= f.submit "登録", class: "button" %>

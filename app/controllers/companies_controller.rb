@@ -34,11 +34,8 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     
     #画像削除
-    if params[:company][:image_ids]
-      params[:company][:image_ids].each do |image_id|
-        image = @company.portraits.find(image_id)
-        image.purge
-      end
+    if params[:company][:image_id]
+      @company.portrait.purge
     end
 
     if @company.update(company_params)
@@ -50,6 +47,6 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      params.require(:company).permit(:user_id, :name, :address, :access, :info, :prefecture_id, portraits: [])
+      params.require(:company).permit(:user_id, :name, :address, :access, :info, :prefecture_id, :portrait)
     end
 end

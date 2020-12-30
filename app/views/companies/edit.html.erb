@@ -1,5 +1,5 @@
 <div class="wrap-left">
-<h2>施設を編集する</h2>
+<h2>宿泊施設を編集する</h2>
   <%= form_with(url:company_path, model: @company, method: :put, local: true) do |f| %>
     <div>
       <%= f.hidden_field :user_id, :value => current_user.id, class: 'form-control' %>
@@ -22,17 +22,20 @@
       
     </div>
     <div class="input-area">
-      <p class="label">施設写真</p>
-      <% if @company.portraits.attached? %>
-        <% @company.portraits.each do |portrait| %>
-            <%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
-            <%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
-        <% end %>
+      <% if @company.portrait.attached? %>
+        <p class="label">施設写真</p>
+        <%= image_tag @company.portrait.variant(resize_to_limit: [200, 200]) %>
+        <p>
+          <%= f.check_box :image_id, {multiple: false}, @company.portrait.id, false %>
+          <span class="delete-alert">施設の写真を削除する</span>
+        </p>
+      <% else %>
+        <p class="label">施設の写真は登録されていません</p>
       <% end %>
     </div>
     <div class="input-area">
       <p><%= f.label "施設写真を更新する", class: "label" %></p>
-      <%= f.file_field :portraits, direct_upload: true, multiple: true %>
+      <%= f.file_field :portrait, direct_upload: true, multiple: false %>
     </div>
     <div class="button-area">
       <%= f.submit "更新" ,class: "button" %>

@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
     extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
-    has_many_attached :portraits
+    has_one_attached :portrait
     validates :name, presence: true, length: {maximum: 255}
     validates :address, presence: true, length: {maximum: 255}
     validates :access, presence: true, length: {maximum: 255}

@@ -78,6 +78,10 @@
   border-radius: 5px;
   padding: 5px 10px;
 }
+.delete-alert{
+  color: red;
+  font-size: 12px;
+}
 
 /**/
 .panel {
