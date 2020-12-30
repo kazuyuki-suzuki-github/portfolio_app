@@ -1,30 +1,20 @@
-<div>
-	<div>
-		<% @search_result.each{ |company| %>
-			<div class="search-result-company">
-				<p>施設写真</p>
-				<% if company.portrait.attached? %>
-					<div class="slider">
-						<div class="slideSet">
-							<%= image_tag company.portrait.variant(resize_to_limit: [400, 400]), class: "slide"%>
-						</div>
-					</div>
-					<button class="slider-prev">前へ</button>
-					<button class="slider-next">次へ</button>
-				<% end %>
-				<p>施設名</p>
-				<%= company.name %>
-				<p>アクセス</p>
-				<%= company.access %>
-				<% company.plans.each{ |plan| %>
-					<p>プラン名</p>
-					<%= plan.name %>
-					<p>値段</p>
-					<%= plan.price %>
-					<p>
-					<p><%= link_to "詳細", plan_path(plan.id) ,class: "edit-button" %></p>
-				<% } %>
-			</div>
+<% @search_result.each{ |company| %>
+	<div class="search-result-company">
+		<p><%= company.name %></p>
+		<% if company.portrait.attached? %>
+			<%= image_tag company.portrait.variant(resize_to_limit: [300, 300]) %>
+		<% end %>
+		<div class="company-info">
+			<p>アクセス：<%= company.access %></p>
+			
+			<p><%= company.info %></p>
+		</div>
+		<p>予約できる宿泊プラン</p>
+		<% company.plans.each{ |plan| %>
+			<%= plan.name %>
+			<p>値段：<%= plan.price %></p>
+			<p>部屋タイプ：<%= @room_type.find(plan.room_type).name %></p>
+			<p><%= link_to "プランの詳細を見る", plan_path(plan.id) ,class: "edit-button" %></p>
 		<% } %>
 	</div>
-</div>
+<% } %>
