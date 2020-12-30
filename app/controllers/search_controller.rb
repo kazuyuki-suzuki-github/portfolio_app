@@ -6,10 +6,10 @@ class SearchController < ApplicationController
       checkin:params[:search][:checkin],
       checkout:params[:search][:checkout],
       people:params[:search][:people])
-
-    if !@search.valid?
       @work_features = Feature.where(genre:1)
       @vacation_features = Feature.where(genre:2)
+
+    if !@search.valid?
       render 'home/top'
       return
     end
@@ -20,8 +20,8 @@ class SearchController < ApplicationController
     session[:people] = params[:search][:people]
 
     search_features = Array.new
-    search_features += params[:search][:work_features] if !params[:search][:work_features].nil?
-    search_features += params[:search][:vacation_features] if !params[:search][:vacation_features].nil?
+    search_features += @sfw = params[:search][:work_features] if !params[:search][:work_features].nil?
+    search_features += @sfv = params[:search][:vacation_features] if !params[:search][:vacation_features].nil?
 
     if !search_features.empty?
       # キーワードが一つでも選択された場合
