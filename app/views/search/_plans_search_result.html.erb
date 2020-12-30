@@ -3,12 +3,10 @@
 		<% @search_result.each{ |company| %>
 			<div class="search-result-company">
 				<p>施設写真</p>
-				<% if company.portraits.attached? %>
+				<% if company.portrait.attached? %>
 					<div class="slider">
 						<div class="slideSet">
-							<% company.portraits.each do |portrait| %>
-								<%= image_tag portrait.variant(resize_to_limit: [400, 400]), class: "slide"%>
-							<% end %>
+							<%= image_tag company.portrait.variant(resize_to_limit: [400, 400]), class: "slide"%>
 						</div>
 					</div>
 					<button class="slider-prev">前へ</button>
