@@ -38,11 +38,11 @@
           <%=safe_join(@company.info.split("\n"),tag(:br))%>
         </div>
         <div class="company-contents-detail">
-          <p class="company-contents-label">施設写真</p>
-          <% if @company.portraits.attached? %>
-            <% @company.portraits.each do |portrait| %>
-                <%= image_tag portrait.variant(resize_to_limit: [200, 200]) %>
-            <% end %>
+          <% if @company.portrait.attached? %>
+            <p class="company-contents-label">施設写真</p>
+            <%= image_tag @company.portrait.variant(resize_to_limit: [200, 200]) %>
+          <% else %>
+            <p class="company-contents-label">施設の写真は登録されていません</p>
           <% end %>
         </div>
         <div>

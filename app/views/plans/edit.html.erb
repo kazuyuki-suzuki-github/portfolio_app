@@ -51,16 +51,19 @@
       <% end %>
     </div>
     <div class="input-area">
-      <p class="label">登録済のプラン写真</p>
       <% if @plan.portraits.attached? %>
+        <p class="label">登録済のプラン写真</p>
+        <p class="delete-alert">チェックを入れて更新すると削除されます</p>
         <% @plan.portraits.each do |portrait| %>
-            <%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
             <%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
+            <%= f.check_box :image_ids, {multiple: true}, portrait.id, false %>
         <% end %>
+      <% else %>
+        <p class="label">プランの写真は登録されていません</p>
       <% end %>
     </div>
     <div class="input-area">
-			<p class="label">プラン写真を更新する</p>
+			<p class="label">プランの写真を更新する</p>
       <%= f.file_field :portraits, direct_upload: true, multiple: true %>
     </div>
     <div class="button-area">
