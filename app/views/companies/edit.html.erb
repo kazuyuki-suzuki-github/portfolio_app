@@ -1,5 +1,5 @@
-<div class="wrap-left">
-<h2>宿泊施設を編集する</h2>
+<div>
+  <h2>宿泊施設を編集する</h2>
   <%= form_with(url:company_path, model: @company, method: :put, local: true) do |f| %>
     <div>
       <%= f.hidden_field :user_id, :value => current_user.id, class: 'form-control' %>
