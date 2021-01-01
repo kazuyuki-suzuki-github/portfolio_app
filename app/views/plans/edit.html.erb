@@ -39,14 +39,14 @@
     <div class="input-area">
 			<p class="label">働くのキーワード</p>
       <% @work_features.each do |wf| %>
-        <%= f.check_box :work_features, {multiple: true, checked: @plan_work_features.include?(wf.id)}, wf.id, nil  %>
+        <%= f.check_box :work_features, {multiple: true, checked: @plan_work_features.map{|w| w.feature_id}.include?(wf.id)}, wf.id, nil %>
         <%= wf.name %>
       <% end %>
     </div>
     <div class="input-area">
 			<p class="label">遊びのキーワード</p>
       <% @vacation_features.each do |vf| %>
-        <%= f.check_box :vacation_features, {multiple: true, checked: @plan_vacation_features.include?(vf.id)}, vf.id, nil  %>
+        <%= f.check_box :vacation_features, {multiple: true, checked: @plan_vacation_features.map{|v| v.feature_id}.include?(vf.id)}, vf.id, nil %>
         <%= vf.name %>
       <% end %>
     </div>
