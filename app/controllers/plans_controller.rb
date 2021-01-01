@@ -13,13 +13,13 @@ class PlansController < ApplicationController
     if @plan.save
       #働くの特徴を登録
       params[:plan][:work_features].each do |v|
-        wf = {plans_id: @plan.id, features_id: v.to_i}
+        wf = {plans_id: @plan.id, feature_id: v.to_i}
         @pf = PlanFeature.new(wf)
         @pf.save
       end
       #遊ぶの特徴を登録
       params[:plan][:vacation_features].each do |v|
-        wf = {plans_id: @plan.id, features_id: v.to_i}
+        wf = {plans_id: @plan.id, feature_id: v.to_i}
         @pf = PlanFeature.new(wf)
         @pf.save
       end
@@ -39,39 +39,13 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     @room_type = RoomType.all
     #働くの特徴を取得
-    sql_w =  
-    "select
-      f.id
-    from
-      plan_features pf
-        inner join features f on
-        f.id = pf.features_id
-    where
-      pf.plans_id = ?
-      and f.genre = 1
-    "
-    plan_work_features = PlanFeature.find_by_sql([sql_w,@plan.id])
-    @plan_work_features = Array.new
-    plan_work_features.each do |w|
-      @plan_work_features.push(w.id)
-    end
+    @plan_work_features = PlanFeature.joins(:feature).where(
+                                  plan_features: {plans_id: @plan.id},
+                                  features: {genre: 1})
     #遊ぶの特徴を取得
-    sql_v =  
-    "select
-      f.id
-    from
-      plan_features pf
-        inner join features f on
-        f.id = pf.features_id
-    where
-      pf.plans_id = ?
-      and f.genre = 2
-    "
-    plan_vacation_features = PlanFeature.find_by_sql([sql_v,@plan.id])
-    @plan_vacation_features = Array.new
-    plan_vacation_features.each do |v|
-      @plan_vacation_features.push(v.id)
-    end
+    @plan_vacation_features = PlanFeature.joins(:feature).where(
+                                  plan_features: {plans_id: @plan.id},
+                                  features: {genre: 2})
   end
   
   def update
@@ -90,52 +64,26 @@ class PlansController < ApplicationController
       plan_features.destroy_all
       #働くの特徴を登録
       params[:plan][:work_features].each do |v|
-        wf = {plans_id: @plan.id, features_id: v.to_i}
+        wf = {plans_id: @plan.id, feature_id: v.to_i}
         @pf = PlanFeature.new(wf)
         @pf.save
       end
       #遊ぶの特徴を登録
       params[:plan][:vacation_features].each do |v|
-        wf = {plans_id: @plan.id, features_id: v.to_i}
+        wf = {plans_id: @plan.id, feature_id: v.to_i}
         @pf = PlanFeature.new(wf)
         @pf.save
       end
       redirect_to companies_path
     else
       #働くの特徴を取得
-      sql_w =  
-      "select
-        f.id
-      from
-        plan_features pf
-          inner join features f on
-          f.id = pf.features_id
-      where
-        pf.plans_id = ?
-        and f.genre = 1
-      "
-      plan_work_features = PlanFeature.find_by_sql([sql_w,@plan.id])
-      @plan_work_features = Array.new
-      plan_work_features.each do |w|
-        @plan_work_features.push(w.id)
-      end
+      @plan_work_features = PlanFeature.joins(:feature).where(
+                                  plan_features: {plans_id: @plan.id},
+                                  features: {genre: 1})
       #遊ぶの特徴を取得
-      sql_v =  
-      "select
-        f.id
-      from
-        plan_features pf
-          inner join features f on
-          f.id = pf.features_id
-      where
-        pf.plans_id = ?
-        and f.genre = 2
-      "
-      plan_vacation_features = PlanFeature.find_by_sql([sql_v,@plan.id])
-      @plan_vacation_features = Array.new
-      plan_vacation_features.each do |v|
-        @plan_vacation_features.push(v.id)
-      end
+      @plan_vacation_features = PlanFeature.joins(:feature).where(
+                                  plan_features: {plans_id: @plan.id},
+                                  features: {genre: 2})
       @work_features = Feature.where(genre:1)
       @vacation_features = Feature.where(genre:2)
       @room_type = RoomType.all
