@@ -6,45 +6,45 @@
 		<%= csp_meta_tag %>
 		<%= favicon_link_tag('favicon.ico') %>
 
-	<%= stylesheet_link_tag 'ress', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag 'sessions', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag 'companies', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag 'plans', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag 'search', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag 'reserve', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= javascript_pack_tag 'home', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'ress', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'sessions', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'companies', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'plans', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'search', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'reserve', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_pack_tag 'home', 'data-turbolinks-track': 'reload' %>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   </head>
 
   <body>
 		<header>
-			<div class="header-logo-menu">
-				<div class="logo">
-					<h1><%= link_to "Workation.com", '/'%></h1>
-				</div>	
-				<nav>
-					<ul class="menu">
-						<% if logged_in? %>
-							<li>
-								<%= link_to current_user.name + ' ▼', '#', class: "panel-btn user-name" %>
-								<div class="panel">
-									<div><%= link_to "- アカウント", edit_user_path(current_user.id), class:"panel-menu" %></div>
-									<div><%= link_to "- 予約", reserve_index_path, class:"panel-menu" %></div>
-								</div>
-							</li>
-						<% end %>
-						<% if logged_in? %>
-							<li><%= link_to "ログアウト", logout_path %></li>
-						<% end %>
-						<% if !logged_in? %>
-							<li><%= link_to "ログイン", login_path %></li>
-						<% end %>
-						<li><%= link_to "サインアップ", new_user_path %></li>
-						<li><%= link_to "宿泊施設を登録する", companies_path %></li>
-					</ul>
-				</nav>
+			<div class="logo">
+				<h1><%= link_to "Workation.com", '/'%></h1>
 			</div>
+			<nav id="ham-menu">
+				<ul class="menu">
+					<% if logged_in? %>
+						<li>
+							<%= link_to current_user.name + ' ▼', '#', class: "panel-btn user-name" %>
+							<div class="panel">
+								<div><%= link_to "- アカウント", edit_user_path(current_user.id), class:"panel-menu" %></div>
+								<div><%= link_to "- 予約", reserve_index_path, class:"panel-menu" %></div>
+							</div>
+						</li>
+					<% end %>
+					<% if logged_in? %>
+						<li><%= link_to "ログアウト", logout_path %></li>
+					<% end %>
+					<% if !logged_in? %>
+						<li><%= link_to "ログイン", login_path %></li>
+					<% end %>
+					<li><%= link_to "サインアップ", new_user_path %></li>
+					<li><%= link_to "宿泊施設を登録する", companies_path %></li>
+				</ul>
+			</nav>
+			<div id="menu-background"></div>
 		</header>
 		<div class="main">
 			<%= yield %>
