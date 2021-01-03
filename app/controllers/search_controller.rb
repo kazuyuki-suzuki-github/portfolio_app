@@ -28,7 +28,7 @@ class SearchController < ApplicationController
       # キーワードが一つでも選択された場合
       target_plan_id =PlanFeature
                               .select('plans_id, count(plans_id)')
-                              .where(features_id: search_features)
+                              .where(feature_id: search_features)
                               .group(:plans_id)
                               .order('count(plans_id) desc')
       @search_result = Company.includes(:plans).where(

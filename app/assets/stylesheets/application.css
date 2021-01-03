@@ -94,6 +94,18 @@ footer {
   color: red;
   font-size: 12px;
 }
+.show-contents{
+  background-color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.show-area{
+  padding:5px 0;
+}
+.show-label{
+  font-size: 12px;
+}
 
 /**/
 .panel {
@@ -150,8 +162,7 @@ a {
   background-color: #E01886;
   color: white;
   border-radius: 5px;
-  font-size: 15px;
-  padding: 5px 15px;
+  padding: 5px 10px;
 }
 @media screen and (max-width: 768px){
   #ham-menu {
