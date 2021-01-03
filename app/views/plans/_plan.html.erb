@@ -1,19 +1,16 @@
-<div class="plan-contents">
-	<div class="plan-contents-detail">
-		<p class="plan-contents-label">プラン名</p>
+<div class="show-contents">
+	<div class="show-area">
+		<p class="show-label">プラン名</p>
 		<%= plan.name %>
 	</div>
-	<div class="plan-contents-detail">
-		<p class="plan-contents-label">販売期間</p>
-		<%= "#{plan.sale_from} － #{plan.sale_to}" %>
+	<div class="show-area">
+		<p class="show-label">販売期間</p>
+		<%= "#{plan.sale_from.strftime("%Y/%m/%d")} － #{plan.sale_to.strftime("%Y/%m/%d")}" %>
 	</div>
-	<div class="plan-contents-detail">
-		<%= link_to "編集", edit_plan_path(plan.id) , class: 'edit-button' %>
-		<!--
-		<%= link_to "削除", plan_path(plan.id), method: :delete, data: { confirm: '削除してよろしいですか？' }, class:'delete-button' %>
-		-->
-		<div>
-			<%= button_to "削除", plan_path(plan.id), method: :delete, data: { confirm: '宿泊プランを削除してよろしいですか？'}, class: 'delete-field' %>
-		</div>
+	<div class="button-area">
+		<%= link_to "編集", edit_plan_path(plan.id) , class: "button" %>
+	</div>
+	<div>
+		<%= button_to "削除", plan_path(plan.id), method: :delete, data: { confirm: '宿泊プランを削除してよろしいですか？'}, class: "delete-button" %>
 	</div>
 </div>

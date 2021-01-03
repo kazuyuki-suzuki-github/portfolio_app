@@ -1,67 +1,49 @@
-<div>
-  <div>
-    <h2>宿泊施設とプラン</h2>
-    
-  </div>
-  <!--
-  <% if logged_in? %>
-    <div>
-      <%= current_user.id %>
+<% if @company %>
+  <h2>現在登録されている宿泊施設</h2>
+  <div class="show-contents">
+    <div class="show-area">
+      <p class="show-label">施設名</p>
+      <%= @company.name %>
     </div>
-    <div>
-      <%= current_user.name %>
+    <div class="show-area">
+      <p class="show-label">所在地</p>
+      <%= @company.prefecture.name %>
+    </div>
+    <div class="show-area">
+      <p class="show-label">住所</p>
+      <%= @company.address %>
+    </div>
+    <div class="show-area">
+      <p class="show-label">アクセス</p>
+      <%= @company.access %>
+    </div>
+    <div class="show-area">
+      <p class="show-label">施設情報</p>
+      <%=safe_join(@company.info.split("\n"),tag(:br))%>
+    </div>
+    <div class="show-area">
+      <% if @company.portrait.attached? %>
+        <p class="show-label">施設写真</p>
+        <%= image_tag @company.portrait.variant(resize_to_limit: [200, 200]) %>
+      <% else %>
+        <p class="show-label">施設の写真は登録されていません</p>
+      <% end %>
+    </div>
+    <div class="button-area">
+      <%= link_to "編集", edit_company_path(@company.id), class: "button" %>
+    </div>
+  </div>
+  <% if @plans %>
+    <h2>現在登録されている宿泊プラン</h2>
+    <%= render @plans %>  
+    <div class="button-area">
+      <%= link_to "新しく宿泊プランを登録する", new_plan_path, class: "button" %>
     </div>
   <% end %>
-  -->
-  <div class="contents">
-    <% if @company %>
-      <h3>現在登録されている宿泊施設</h3>
-      <div class="company-contents">
-        <div class="company-contents-detail">
-          <p class="company-contents-label">施設名</p>
-          <%= @company.name %>
-        </div>
-        <div class="company-contents-detail">
-          <p class="company-contents-label">所在地</p>
-          <%= @company.prefecture.name %>
-        </div>
-        <div class="company-contents-detail">
-          <p class="company-contents-label">住所</p>
-          <%= @company.address %>
-        </div>
-        <div class="company-contents-detail">
-          <p class="company-contents-label">アクセス</p>
-          <%= @company.access %>
-        </div>
-        <div class="company-contents-detail">
-          <p class="company-contents-label">施設情報</p>
-          <%=safe_join(@company.info.split("\n"),tag(:br))%>
-        </div>
-        <div class="company-contents-detail">
-          <% if @company.portrait.attached? %>
-            <p class="company-contents-label">施設写真</p>
-            <%= image_tag @company.portrait.variant(resize_to_limit: [200, 200]) %>
-          <% else %>
-            <p class="company-contents-label">施設の写真は登録されていません</p>
-          <% end %>
-        </div>
-        <div>
-          <%= link_to "編集", edit_company_path(@company.id), class: 'edit-button' %>
-        </div>
-      </div>
-      <% if @plans %>
-        <h3>現在登録されている宿泊プラン</h3>
-        <%= render @plans %>  
-        <div>
-          <%= link_to "宿泊プランを登録する", new_plan_path %>
-        </div>
-      <% end %>
-    <% else %>
-      <div>
-        <h3>宿泊施設とプランは登録されていません</h3>
-        <h3>以下より、登録してください</h3>
-        <%= link_to "宿泊施設情報を登録する", new_company_path %>
-      </div>
-    <% end %>
+<% else %>
+  <div>
+    <h3>宿泊施設とプランは登録されていません</h3>
+    <h3>以下より、登録してください</h3>
+    <%= link_to "新しく宿泊施設情報を登録する", new_company_path, class: "button" %>
   </div>
-</div>
+<% end %>
