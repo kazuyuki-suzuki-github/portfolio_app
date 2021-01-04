@@ -99,6 +99,7 @@ class PlansController < ApplicationController
   
   def show
     @plan = Plan.find_by(id: params[:id])
+    @room_type = RoomType.all
     render 'show'
   end
   

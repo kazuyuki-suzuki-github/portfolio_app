@@ -1,46 +1,49 @@
 <div>
-	<h2>宿泊プラン</h2>
-	<div class="show-plan">
-		<p class="edit-plan-label-name">プラン名</p>
-		<%= @plan.name %>
+	<div class="input-area">
+		<h2><%= @plan.name %></h2>
 	</div>
-	<div class="show-plan">
-		<p class="edit-plan-label-checkin">チェックイン</p>
-		<%= @plan.check_in.strftime("%R") %>
+	<div class="plan-show">
+		<div class="plan-show-left">
+			<% if @plan.portraits.attached? %>
+				<div class="arrow">
+					<button class="slider-prev">
+						<%= image_tag "arrow_left.svg", :width => "28", :height => "28"  %>
+					</button>
+				</div>
+				<div class="slider">
+					<div class="input-area slideSet">
+						<% @plan.portraits.each do |portrait| %>
+							<%= image_tag portrait.variant(resize_to_limit: [300, 300]), class: "slide" %>
+						<% end %>
+					</div>
+				</div>
+				<div class="arrow">
+					<button class="slider-next">
+						<%= image_tag "arrow_right.svg", :width => "28", :height => "28"  %>
+					</button>
+				</div>
+			<% end %>
+		</div>
+		<div class="plan-show-right">
+			<div class="input-area">
+				<p class="label">チェックイン</p>
+				<%= @plan.check_in.strftime("%R") %>
+			</div>
+			<div class="input-area">
+				<p class="label">チェックアウト</p>
+				<%= @plan.check_out.strftime("%R") %>
+			</div>
+			<div class="input-area">
+				<p class="label">部屋タイプ</p>
+				<%= @room_type.find(@plan.room_type).name %>
+			</div>
+			<div class="input-area">
+				<p class="label">値段</p>
+				<%= @plan.price %>
+			</div>
+		</div>
 	</div>
-	<div class="show-plan">
-		<p class="edit-plan-label-checkout">チェックアウト</p>
-		<%= @plan.check_out.strftime("%R") %>
-	</div>
-	<div class="show-plan">
-		<p class="edit-plan-label-stock">在庫</p>
-		<%= @plan.stock %>
-	</div>
-	<div class="show-plan">
-		<p class="edit-plan-label-price">値段</p>
-		<%= @plan.price %>
-	</div>
-	<div class="show-plan">
-		<p class="edit-plan-label-salefrom">販売開始</p>
-		<%= @plan.sale_from %>
-	</div>
-	<div class="show-plan">
-		<p class="edit-plan-label-saleto">販売終了</p>
-		<%= @plan.sale_to %>
-	</div>
-	<div class="show-plan">
-		<p class="edit-plan-label-roomtype">部屋タイプ</p>
-		<%= @plan.room_type %>
-	</div>
-	<div class="show-plan">
-		<p class="edit-plan-label-portraits">プラン写真</p>
-		<% if @plan.portraits.attached? %>
-			<% @plan.portraits.each do |portrait| %>
-				<%= image_tag portrait.variant(resize_to_limit: [100, 100]) %>
-		<% end %>
-	<% end %>
-</div>
-	<div>
+	<div class="button-area">
 		<%= link_to "予約する", confirm_reserve_path(@plan.id), class: "edit-button" %>
 	</div>
 </div>
