@@ -1,19 +1,26 @@
+<h3>検索結果</h3>
 <% @search_result.each{ |company| %>
-	<div class="search-result-company">
-		<p><%= company.name %></p>
+	<div class="show-contents">
+		<h2><p><%= company.name %></p></h2>
 		<% if company.portrait.attached? %>
 			<%= image_tag company.portrait.variant(resize_to_limit: [300, 300]) %>
 		<% end %>
 		<div class="company-info">
 			<p>アクセス：<%= company.access %></p>
-			<p><%= company.info %></p>
+			<p>施設情報：<%= company.info %></p>
 		</div>
-		<p>予約できる宿泊プラン</p>
-		<% company.plans.each{ |plan| %>
-			<%= plan.name %>
-			<p>値段：<%= plan.price %></p>
-			<p>部屋タイプ：<%= @room_type.find(plan.room_type).name %></p>
-			<p><%= link_to "プランの詳細を見る", plan_path(plan.id) ,class: "edit-button" %></p>
-		<% } %>
+		<div class="plan-area">
+			<h4>予約できる宿泊プラン</h4>
+			<% company.plans.each{ |plan| %>
+				<div class="plan-info">
+					<h3><%= plan.name %></h3>
+					<p>値段：<%= plan.price %></p>
+					<p>部屋タイプ：<%= @room_type.find(plan.room_type).name %></p>
+					<div class="button-area">
+						<%= link_to "プランの詳細を見る", plan_path(plan.id) ,class: "button" %>
+					</div>
+				</div>
+			<% } %>
+		</div>
 	</div>
 <% } %>
