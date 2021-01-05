@@ -30,6 +30,7 @@ class ReserveController < ApplicationController
   
   def index
     @reserves = Reserve.joins(:plan).joins(:company).joins(:reserve_details).where(reserves: {user_id: current_user.id})
+    @room_type = RoomType.all
   end
   
   def destroy
