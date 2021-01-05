@@ -1,35 +1,38 @@
-<div>
-	<h2>予約一覧</h2>
-	<% if @reserves.present? %>
-		<% @reserves.each { |reserve| %>
-			<div class="reserve-area">
-				<div class="reserve-confirm">
-					<p class="reserve-confirm-companyid">施設名</p>
-					<%= reserve.company.name %>
-				</div>
-				<div class="reserve-confirm">
-					<p class="reserve-confirm-planid">ブラン名</p>
-					<%= reserve.plan.name %>
-				</div>
-				<% reserve.reserve_details.each { |detail| %>
-					<div class="reserve-confirm">
-						<p class="reserve-confirm-day">日程</p>
-						<%= "#{detail.check_in} - #{detail.check_out}" %>
-					</div>
-					<div class="reserve-confirm">
-						<p class="reserve-confirm-people">人数</p>
-						<%= detail.people %>
-					</div>
-				<% } %>
-				<div class="reserve-confirm">
-					<%= button_to "削除", reserve_path(reserve.id), method: :delete, data: { confirm: '予約を削除してよろしいですか？'}, class: "delete-field"%>
-				</div>
+<h2>予約一覧</h2>
+<% if @reserves.present? %>
+	<% @reserves.each { |reserve| %>
+		<div class="show-contents">
+			<div class="input-area">
+				<h2><%= reserve.company.name %></h2>
 			</div>
-		<% } %>
-	<% else %>
+			<div class="input-area">
+				<p class="label">ブラン名</p>
+				<h3><%= reserve.plan.name %></h3>
+			</div>
+			<% reserve.reserve_details.each { |detail| %>
+				<div class="input-area">
+					<p class="label">日程</p>
+					<%= "#{detail.check_in.strftime("%Y/%m/%d")} - #{detail.check_out.strftime("%Y/%m/%d")}" %>
+				</div>
+				<div class="input-area">
+					<p class="label">人数</p>
+					<%= detail.people %>
+				</div>
+				<div class="input-area">
+					<p class="label">部屋タイプ</p>
+					<%= @room_type.find(reserve.plan.room_type).name %>
+				</div>
+			<% } %>
+			<div class="input-area">
+				<%= button_to "この予約を削除する", reserve_path(reserve.id), method: :delete, data: { confirm: '予約を削除してよろしいですか？'}, class: "delete-button" %>
+			</div>
+		</div>
+	<% } %>
+<% else %>
+	<div class="input-area">
 		<h3>予約はありません</h3>
-	<% end %>
-	<div>
-		<%= link_to "トップページ", root_path, class: "edit-button" %>
 	</div>
+<% end %>
+<div class="button-area">
+	<%= link_to "トップページ", root_path, class: "button" %>
 </div>
