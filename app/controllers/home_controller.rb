@@ -16,4 +16,7 @@ class HomeController < ApplicationController
 
   def contact
   end
+
+  def coin
+  end
 end
