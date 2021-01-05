@@ -1,40 +1,39 @@
-<div>
-	<div class="reserve-confirm">
+<div class="show-contents">
+	<div class="input-area">
 		<h4>以下の内容で予約します。</h4>
 		<h4>よろしいですか？</h4>
 	</div>
-	<div class="reserve-confirm">
-		<p class="reserve-confirm-name">プラン名</p>
-		<%= @plan.name %>
+	<div class="input-area">
+		<h2><%= @plan.name %></h2>
 	</div>
-	<div class="reserve-confirm">
-		<p class="reserve-confirm-day">日程</p>
-		<%= "#{session[:checkin]} - #{session[:checkout]}" %>
+	<div class="input-area">
+		<p class="label">日程</p>
+		<%= "#{Date.parse(session[:checkin]).strftime("%Y/%m/%d")} - #{Date.parse(session[:checkout]).strftime("%Y/%m/%d")}" %>
 	</div>
-	<div class="reserve-confirm">
-		<p class="reserve-confirm-checkin">チェックイン時刻</p>
+	<div class="input-area">
+		<p class="label">チェックイン時刻</p>
 		<%= @plan.check_in.strftime("%R") %>
 	</div>
-	<div class="reserve-confirm">
-		<p class="reserve-confirm-checkout">チェックアウト時刻</p>
+	<div class="input-area">
+		<p class="label">チェックアウト時刻</p>
 		<%= @plan.check_out.strftime("%R") %>
 	</div>
-	<div class="reserve-confirm">
-		<p class="reserve-confirm-price">値段</p>
+	<div class="input-area">
+		<p class="label">値段</p>
 		<%= @plan.price %>
 	</div>
-	<div class="reserve-confirm">
-		<p class="reserve-confirm-roomtype">部屋タイプ</p>
-		<%= @plan.room_type %>
+	<div class="input-area">
+		<p class="label">部屋タイプ</p>
+		<%= @room_type.find(@plan.room_type).name %>
 	</div>
-	<div class="reserve-confirm">
-		<p>コインが1枚減ります。</p>
-		<%= "残り#{@user.coin-1}枚" %>
+	<div class="input-area">
+		<h4><%= "コインが残り#{@user.coin-1}枚となります。" %></h4>
+		<h4><%= link_to "コインって？", '/coin' ,class: "coin-link" %></h4>
 	</div>
-	<div class="reserve-confirm">
+	<div class="button-area">
 		<%= form_tag(reserve_index_path, method: :post) do %>
 			<%= hidden_field_tag :id, @plan.id %>
-			<%= submit_tag("予約完了する", class: "edit-button") %>
+			<%= submit_tag("予約完了する", class: "button") %>
 		<% end %>
 	</div>
 </div>

@@ -1,38 +1,11 @@
 // Place all the styles related to the Reserve controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.reserve-confirm{
-  padding: 5px 0;
-}
-.reserve-confirm-name{
-  font-size: 12px;
-}
-.reserve-confirm-checkin{
-  font-size: 12px;
-}
-.reserve-confirm-checkout{
-  font-size: 12px;
-}
-.reserve-confirm-price{
-  font-size: 12px;
-}
-.reserve-confirm-roomtype{
-  font-size: 12px;
-}
-.reserve-confirm-day{
-  font-size: 12px;
-}
-.reserve-confirm-companyid{
-  font-size: 12px;
-}
-.reserve-confirm-planid{
-  font-size: 12px;
-}
-.reserve-confirm-people{
-  font-size: 12px;
-}
 .reserve-area{
   background-color: white;
   border-radius: 5px;
   margin: 5px;
+}
+.coin-link{
+  text-decoration: underline;
 }

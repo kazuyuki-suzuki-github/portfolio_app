@@ -21,6 +21,7 @@ class ReserveController < ApplicationController
     if logged_in?
       @plan = Plan.find(params[:id])
       @user = User.find(session[:user_id])
+      @room_type = RoomType.all
     else
       flash.now[:notice] = "ログインしてください"
       render "sessions/new"

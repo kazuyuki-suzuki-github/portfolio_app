@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/logout', to:'sessions#destroy'
   get '/about', to:'home#about'
   get '/contact', to:'home#contact'
+  get '/coin', to:'home#coin'
   resources :users
   resources :companies
   resources :plans
