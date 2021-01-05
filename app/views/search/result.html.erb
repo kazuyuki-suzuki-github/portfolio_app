@@ -20,18 +20,24 @@
 			</div>
 		</div>
 		<div class="features">
-			<div class="feature">
-				<% @work_features.each do |wf| %>
-					<% if @sfw.include?(wf.id.to_s) %>
-						<span class="work-feature"><%= wf.name %></span>
+			<% if !@sfw.nil? %>
+				<div class="feature-w">
+					<% @work_features.each do |wf| %>
+						<% if @sfw.include?(wf.id.to_s) %>
+							<span class="wf"><%= wf.name %></span>
+						<% end %>
 					<% end %>
-				<% end %>
-				<% @vacation_features.each do |vf| %>
-					<% if @sfv.include?(vf.id.to_s) %>
-					<span class="vacation-feature"><%= vf.name %></span>
+				</div>
+			<% end %>
+			<% if !@sfv.nil? %>
+				<div class="feature-v">
+					<% @vacation_features.each do |vf| %>
+						<% if @sfv.include?(vf.id.to_s) %>
+						<span class="vf"><%= vf.name %></span>
+						<% end %>
 					<% end %>
-				<% end %>
-			</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
 	<div>

@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .search-conditions{
   background-color: white;
-  padding: 5px 5px;
+  padding: 5px 5px 10px 5px;
   border-radius: 5px;
   margin: 10px 0;
 }
@@ -29,28 +29,36 @@
   margin-top:10px;
 }
 .plan-info{
-  background-color: rgb(248, 236, 219);
+  background-color: rgb(243, 235, 224);
   padding: 5px 5px;
   border-radius: 5px;
   margin: 10px 0;
 }
-.search-conditions .features .feature .work-feature{
+.search-conditions .features .feature-w{
+  margin: 20px 0;
+}
+.search-conditions .features .feature-v{
+  margin: 20px 0;
+}
+.search-conditions .features .wf{
   width: 80px;
-  background: #bdc3c7;
-  color: #555e64;
+  padding: 13px 5px;
+  margin: 5px 3px;
+  background: #9ad1e7;
+  color: white;
   font-size: 14px;
   text-align: center;
-  line-height: 1;
-  transition: .1s;
+  /*line-height: 1;*/
   border-radius: 5px;
 }
-.search-conditions .features .feature .vacation-feature{
+.search-conditions .features .vf{
   width: 80px;
-  background: #bdc3c7;
-  color: #555e64;
+  padding: 13px 5px;
+  margin: 5px 5px;
+  background: rgb(252, 207, 125);
+  color:white;
   font-size: 14px;
   text-align: center;
-  line-height: 1;
-  transition: .1s;
+  /*line-height: 1;*/
   border-radius: 5px;
 }

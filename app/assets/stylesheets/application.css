@@ -90,6 +90,12 @@ footer {
   border-radius: 5px;
   padding: 5px 10px;
 }
+.delete-button {
+  background-color: #E01886;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
 .delete-alert{
   color: red;
   font-size: 12px;
@@ -106,8 +112,6 @@ footer {
 .show-label{
   font-size: 12px;
 }
-
-/**/
 .panel {
   display: none;
 }
@@ -134,36 +138,19 @@ a {
 .menu li {
   padding-left:15px;
 }
-
 .user-name {
   margin-right: 22px
 }
-
 .footer-menu {
   color: #F3F3F4;
   font-size: 12px;
   opacity: 0.5;
 }
-
 .copyright {
   font-size: 10px;
   margin-top: 5px;
 }
 
-.edit-button {
-  background-color: #00234B;
-  color: white;
-  border-radius: 5px;
-  font-size: 15px;
-  padding: 5px 15px;
-}
-
-.delete-button {
-  background-color: #E01886;
-  color: white;
-  border-radius: 5px;
-  padding: 5px 10px;
-}
 @media screen and (max-width: 768px){
   #ham-menu {
     background-color: #fff;
@@ -219,7 +206,4 @@ a {
   nav li{
     list-style: none;
   }
-}
-@media screen and (max-width: 479px){
-
 }
