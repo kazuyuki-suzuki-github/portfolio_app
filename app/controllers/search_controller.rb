@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def result
-    
     @search  = Search.new(
       prefecture_id:params[:search][:prefecture_id],
       checkin:params[:search][:checkin],
@@ -31,7 +30,8 @@ class SearchController < ApplicationController
                               .where(feature_id: search_features)
                               .group(:plans_id)
                               .order('count(plans_id) desc')
-      @search_result = Company.includes(:plans).where(
+      @search_result = Company.includes(:plans)
+                                                .where(
                                                   companies: {prefecture_id: @prefecture_id},
                                                   plans:
                                                     {id: target_plan_id.map{|i| i.plans_id},

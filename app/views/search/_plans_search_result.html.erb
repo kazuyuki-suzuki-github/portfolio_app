@@ -1,4 +1,5 @@
 <h3>検索結果</h3>
+<h3><%= "#{@search_result.size}件の宿泊施設がヒットしました" %></h3>
 <% @search_result.each{ |company| %>
 	<div class="show-contents">
 		<h2><p><%= company.name %></p></h2>
