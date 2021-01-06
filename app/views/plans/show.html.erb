@@ -41,6 +41,20 @@
 				<p class="label">値段</p>
 				<%= @plan.price %>
 			</div>
+			<% if !@plan_work_features.nil? %>
+				<div class="features">
+					<% @plan_work_features.each do |wf| %>
+						<span class="wf"><%= wf.feature.name %></span>
+					<% end %>
+				</div>
+			<% end %>
+			<% if !@plan_vacation_features.nil? %>
+				<div class="features">
+					<% @plan_vacation_features.each do |vf| %>
+						<span class="vf"><%= vf.feature.name %></span>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 	<div class="button-area">
