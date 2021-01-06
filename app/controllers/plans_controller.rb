@@ -100,6 +100,8 @@ class PlansController < ApplicationController
   def show
     @plan = Plan.find_by(id: params[:id])
     @room_type = RoomType.all
+    @plan_work_features = PlanFeature.where(plans_id: params[:id]).includes(:feature).where(features: {genre: 1})
+    @plan_vacation_features = PlanFeature.where(plans_id: params[:id]).includes(:feature).where(features: {genre: 2})
     render 'show'
   end
   
