@@ -55,4 +55,10 @@ RSpec.describe Plan, type: :model do
     expect(plan.errors[:room_type]).to include("を入力してください")
   end
 
+  it "is invalid 256 character name" do
+    plan = FactoryBot.build(:plan, name: "a"*256)
+    plan.valid?
+    expect(plan.errors[:name]).to include("は255文字以内で入力してください")
+  end
+
 end
